@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { styled } from "../stitches.config";
 
 export const NewProjectPage: React.FC = () => {
+  const [receiverName, setReceiverName] = useState("");
   const registerProject = () => {
-    alert("registered");
+    alert(receiverName);
   };
   return (
     <Wrapper>
       <PageTitle>色紙を作成する</PageTitle>
       <Discription>ここで入力されたお名前はページが公開されるときにも使用されます。</Discription>
       <InputNameWrapper>
-        <InputName />
+        <InputName value={receiverName} onChange={(e) => setReceiverName(e.target.value)} />
       </InputNameWrapper>
       <RegisterButtonWrapper>
         <RegisterProjectButton onClick={registerProject}>色紙を作成する</RegisterProjectButton>
