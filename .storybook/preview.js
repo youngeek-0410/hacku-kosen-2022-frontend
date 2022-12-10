@@ -25,3 +25,10 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => {
+    globalStyles();
+    return <Story />;
+  },
+];
