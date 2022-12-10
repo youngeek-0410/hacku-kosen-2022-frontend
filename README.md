@@ -1,45 +1,11 @@
-# 🌍 My portfolio site
+# HackU Kosen 2022 Frontend
 
-Backend Repo - https://github.com/igsr5/portfolio-backend  
-Schema Repo(Protocol Buffers) - https://github.com/igsr5/portfolio-proto
-
-<img src="https://images.igsr5.com/l/afjife.png" width="700px" />
-
-https://igsr5.dev
-
-@igsr5 のポートフォリオサイトです。
-
-
-## Summary
-- About page
-- Resume page
-- Portfolio page
-- Blog page
-
-
-## Development
-This is a igsr5's original [Next.js](https://nextjs.org/) project.
-
-## +@ igsr5's original settings.
-✅ Enable typeScript.
-
-✅ styled-component, Tailwind CSS
-
-✅ Setting eslint, prettier.
-
-✅ Setting some directory location.
-
-✅ Remove unneccesary code.
-
-etc...
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
