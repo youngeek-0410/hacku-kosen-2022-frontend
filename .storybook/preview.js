@@ -1,6 +1,8 @@
 import * as NextImage from "next/image";
 import React from "react";
 
+import { globalStyles } from "../src/stitches.config";
+
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
