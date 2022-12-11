@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 import { styled } from "../../stitches.config";
 
-import { BrowseImage } from "./BrowseImage";
 import { BrowseMessage } from "./BrowseMessage";
 import { CopyProjectLink } from "./EditProjectLink";
 import { MusicEdit } from "./MusicEdit";
@@ -28,7 +27,6 @@ export const ProjectDetailPage: React.FC = () => {
       <CopyProjectLink />
       <MusicEdit />
       <BrowseMessage />
-      <BrowseImage />
       <NewMessageButton onClick={moveNewMessage}>思いをとどける</NewMessageButton>
     </>
   );

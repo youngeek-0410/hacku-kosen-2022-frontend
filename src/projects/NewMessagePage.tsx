@@ -20,25 +20,25 @@ export const NewMessagePage: React.FC = () => {
 
   const canSendMessage = textMessage !== "" && senderName !== "";
 
-  const sendMessage = () => {
+  const onClickSendMessage = () => {
     if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
     callMessageApi(textMessage, senderName);
 
     router.push(`/projects/${project_id}`);
   };
 
-  const backPage = () => {
+  const onClickBackPage = () => {
     router.push(`/projects/${project_id}`);
   };
 
   return (
     <>
-      <BackButton onClick={backPage}>もどる</BackButton>
+      <BackButton onClick={onClickBackPage}>もどる</BackButton>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
       <SenderNameEdit senderName={senderName} onChange={setSenderName} />
 
-      <SendMessageButton onClick={sendMessage} disabled={!canSendMessage}>
+      <SendMessageButton onClick={onClickSendMessage} disabled={!canSendMessage}>
         思いをとどける
       </SendMessageButton>
     </>
