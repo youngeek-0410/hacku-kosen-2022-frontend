@@ -18,6 +18,8 @@ export const NewMessagePage: React.FC = () => {
   const [textMessage, setTextMessage] = useState("");
   const [senderName, setSenderName] = useState("");
 
+  const canSendMessage = textMessage !== "" && senderName !== "";
+
   const sendMessage = () => {
     if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
     callMessageApi(textMessage, senderName);
@@ -25,10 +27,13 @@ export const NewMessagePage: React.FC = () => {
     router.push(`/projects/${project_id}`);
   };
 
-  const canSendMessage = textMessage !== "" && senderName !== "";
+  const backPage = () => {
+    router.push(`/projects/${project_id}`);
+  };
 
   return (
     <>
+      <BackButton onClick={backPage}>もどる</BackButton>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
       <SenderNameEdit senderName={senderName} onChange={setSenderName} />
@@ -46,3 +51,5 @@ const SendMessageButton = styled("button", {
   display: "block",
   margin: "0 auto",
 });
+
+const BackButton = styled("button", {});
