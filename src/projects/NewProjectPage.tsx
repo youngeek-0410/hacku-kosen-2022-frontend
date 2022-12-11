@@ -32,11 +32,10 @@ export const NewProjectPage: React.FC = () => {
           onChange={(e) => setReceiverName(e.target.value)}
         />
       </InputNameWrapper>
-      <RegisterButtonWrapper>
-        <RegisterProjectButton onClick={registerProject} disabled={!canRegister}>
-          色紙を作成する
-        </RegisterProjectButton>
-      </RegisterButtonWrapper>
+
+      <RegisterProjectButton onClick={registerProject} disabled={!canRegister}>
+        色紙を作成する
+      </RegisterProjectButton>
     </Wrapper>
   );
 };
@@ -65,12 +64,10 @@ const InputName = styled("input", {
 
 const RegisterProjectButton = styled("button", {
   marginTop: "16px",
+  display: "block",
+  margin: "0 auto",
 });
 
 const InputNameWrapper = styled("div", {
-  marginTop: "16px",
-});
-
-const RegisterButtonWrapper = styled("div", {
   marginTop: "16px",
 });
