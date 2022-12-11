@@ -40,8 +40,8 @@ export const authenticate = async (): Promise<AccessToken> => {
 };
 
 const getClientCredentials = () => {
-  const clientId = process.env.NEXT_PUBLIC_SPOTIFY_API_CLIENT_ID;
-  const clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_API_CLIENT_SECRET;
+  const clientId = process.env.NEXT_PUBLIC_SPOTIFY_API_CLIENT_ID || "test client id";
+  const clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_API_CLIENT_SECRET || "test client secret";
   if (!(clientId && clientSecret)) throw new Error("failed to get spotify api credentials");
 
   return Buffer.from(clientId + ":" + clientSecret).toString("base64");
