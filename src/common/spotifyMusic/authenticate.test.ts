@@ -1,10 +1,10 @@
 import { setupServer } from "msw/node";
 import { rest } from "msw";
 
-import { authenticate, authUrl } from "./authenticate";
+import { authenticate, authSpotifyApiUrl } from "./authenticate";
 
 const mockServer = setupServer(
-  rest.post(authUrl, (req, res, ctx) => {
+  rest.post(authSpotifyApiUrl, (req, res, ctx) => {
     const resBody = {
       access_token: "token",
       token_type: "Bearer",

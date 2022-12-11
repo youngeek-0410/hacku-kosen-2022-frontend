@@ -1,39 +1,33 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-export const authUrl = "https://accounts.spotify.com/api/token";
+export const authSpotifyApiUrl = "https://accounts.spotify.com/api/token";
 
 type SpotifyApiAuthRequest = {
   grant_type: "client_credentials";
 };
 
 type SpotifyApiAuthResponse = {
-  data: {
-    access_token: string;
-    token_type: string;
-    expires_in: number;
-  };
-  status: number;
+  access_token: string;
+  token_type: string;
+  expires_in: number;
 };
 
 type AccessToken = string;
 
 export const authenticate = async (): Promise<AccessToken> => {
-  const reqBody: SpotifyApiAuthRequest = {
-    grant_type: "client_credentials",
-  };
-  const authOptions: AxiosRequestConfig = {
+  const requestConfig: AxiosRequestConfig<SpotifyApiAuthRequest> = {
+    url: authSpotifyApiUrl,
     method: "POST",
     headers: {
       Authorization: `Basic ${getClientCredentials()}`,
       "content-type": "application/x-www-form-urlencoded",
     },
+    data: {
+      grant_type: "client_credentials",
+    },
   };
 
-  const { data, status } = await axios.post<SpotifyApiAuthRequest, SpotifyApiAuthResponse>(
-    authUrl,
-    reqBody,
-    authOptions
-  );
+  const { data, status } = await axios.request<SpotifyApiAuthResponse>(requestConfig);
   if (status !== 200) throw new Error("failed to authenticate spotify api");
 
   return data.access_token;
