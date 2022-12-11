@@ -1,20 +1,24 @@
-import { styled } from "@stitches/react";
 import React from "react";
+
+import { styled } from "../stitches.config";
 
 import { SectionTitle } from "./NewMessagePage";
 
+type Props = {
+  senderName: string;
+  onChange(v: string): void;
+};
+
 const senderNamePlaceholder = "山田 花子";
 
-export const SenderNameEdit: React.FC<{ senderName: string; setSenderName: (v: string) => void }> = (props) => {
-  const senderName = props.senderName;
-  const setSenderName = props.setSenderName;
+export const SenderNameEdit: React.FC<Props> = (props) => {
   return (
     <>
       <SectionTitle>あなたのお名前をどうぞ</SectionTitle>
       <InputSenderName
-        value={senderName}
+        value={props.senderName}
         placeholder={senderNamePlaceholder}
-        onChange={(e) => setSenderName(e.target.value)}
+        onChange={(e) => props.onChange(e.target.value)}
       />
     </>
   );

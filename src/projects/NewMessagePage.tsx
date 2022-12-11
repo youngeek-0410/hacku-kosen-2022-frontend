@@ -12,14 +12,14 @@ const callMessageApi = (textMessage: string, senderName: string, imageMessage?: 
 };
 
 export const NewMessagePage: React.FC = () => {
-  const [textMessage, setTextMessage] = useState("");
-  const [senderName, setSenderName] = useState("");
-
   const router = useRouter();
   const { project_id } = router.query;
 
-  const sendNewMessage = () => {
-    if (!canSendMessage) return;
+  const [textMessage, setTextMessage] = useState("");
+  const [senderName, setSenderName] = useState("");
+
+  const sendMessage = () => {
+    if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
     callMessageApi(textMessage, senderName);
 
     router.push(`/projects/${project_id}`);
@@ -28,26 +28,21 @@ export const NewMessagePage: React.FC = () => {
   const canSendMessage = textMessage !== "" && senderName !== "";
 
   return (
-    <div>
+    <>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
-      <SenderNameEdit senderName={senderName} setSenderName={setSenderName} />
+      <SenderNameEdit senderName={senderName} onChange={setSenderName} />
 
-      <SendMessageButtonWrapper>
-        <SendMessageButton onClick={sendNewMessage} disabled={!canSendMessage}>
-          思いをとどける
-        </SendMessageButton>
-      </SendMessageButtonWrapper>
-    </div>
+      <SendMessageButton onClick={sendMessage} disabled={!canSendMessage}>
+        思いをとどける
+      </SendMessageButton>
+    </>
   );
 };
 
 export const SectionTitle = styled("p", {});
 
-const SendMessageButton = styled("button", {});
-
-const SendMessageButtonWrapper = styled("div", {
-  textAlign: "center",
+const SendMessageButton = styled("button", {
+  display: "block",
+  margin: "0 auto",
 });
-
-const UploadedImage = styled("img", {});

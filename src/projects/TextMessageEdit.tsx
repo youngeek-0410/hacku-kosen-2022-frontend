@@ -4,7 +4,12 @@ import { styled } from "../stitches.config";
 
 import { SectionTitle } from "./NewMessagePage";
 
-export const TextMessageEdit: React.FC<{ sectionValue: string; onChange: (v: string) => void }> = (props) => {
+type Props = {
+  sectionValue: string;
+  onChange(v: string): void;
+};
+
+export const TextMessageEdit: React.FC<Props> = (props) => {
   return (
     <>
       <SectionTitle>送るメッセージを入力してください</SectionTitle>
