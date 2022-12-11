@@ -5,7 +5,7 @@ import { styled } from "../../stitches.config";
 
 import { BrowseImage } from "./BrowseImage";
 import { BrowseMessage } from "./BrowseMessage";
-import { EditProjectLink } from "./EditProjectLink";
+import { CopyProjectLink } from "./EditProjectLink";
 import { MusicEdit } from "./MusicEdit";
 
 // API call
@@ -25,10 +25,10 @@ export const ProjectDetailPage: React.FC = () => {
   return (
     <>
       <ReceiverName>{receiverName}さんへの色紙</ReceiverName>
-      <EditProjectLink></EditProjectLink>
-      <MusicEdit></MusicEdit>
-      <BrowseMessage></BrowseMessage>
-      <BrowseImage></BrowseImage>
+      <CopyProjectLink />
+      <MusicEdit />
+      <BrowseMessage />
+      <BrowseImage />
       <NewMessageButton onClick={moveNewMessage}>思いをとどける</NewMessageButton>
     </>
   );

@@ -3,12 +3,18 @@ import React from "react";
 import { styled } from "../../stitches.config";
 import { SectionTitle } from "../NewMessagePage";
 
-export const EditProjectLink: React.FC = () => {
+export const CopyProjectLink: React.FC = () => {
+  const copyLink = () => {
+    const url = location.href;
+    navigator.clipboard.writeText(url);
+    alert("copied!");
+  };
+
   return (
     <>
       <SectionTitle>編集用リンクをコピー</SectionTitle>
       <CopyExplanation>色紙を記入してもらうには右のボタンからURLをコピーして共有してください</CopyExplanation>
-      <LinkCopyButton>コピーする</LinkCopyButton>
+      <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>
     </>
   );
 };
