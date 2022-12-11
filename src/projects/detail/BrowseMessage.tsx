@@ -7,8 +7,7 @@ export const BrowseMessage: React.FC = () => {
   return (
     <>
       <SectionTitle>件のメッセージ</SectionTitle>
-      <BrowseAllLink>すべて見る</BrowseAllLink>
-      <Messages></Messages>
+      <BrowseAllLink href={"/"}>すべて見る</BrowseAllLink>
     </>
   );
 };

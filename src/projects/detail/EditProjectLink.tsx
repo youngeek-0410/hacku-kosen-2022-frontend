@@ -7,6 +7,7 @@ export const CopyProjectLink: React.FC = () => {
   const copyLink = () => {
     const url = location.href;
     navigator.clipboard.writeText(url);
+    // ポップアップを表示する？
     alert("copied!");
   };
 
