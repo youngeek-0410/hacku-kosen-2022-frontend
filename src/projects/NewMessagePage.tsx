@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { styled } from "../stitches.config";
 
+import { ImageMessageEdit } from "./ImageMessageEdit";
 import { SenderNameEdit } from "./SenderNameEdit";
 import { TextMessageEdit } from "./TextMessageEdit";
 
@@ -29,14 +30,8 @@ export const NewMessagePage: React.FC = () => {
   return (
     <div>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
-
-      <SectionTitle>思い出の写真をアップロードしてください</SectionTitle>
-      <Images>
-        <UploadImageArea type="file" accept="image/*" multiple />
-        <UploadedImage src=""></UploadedImage>
-      </Images>
-
-      <SenderNameEdit senderName={senderName} setSenderName={setSenderName}></SenderNameEdit>
+      <ImageMessageEdit />
+      <SenderNameEdit senderName={senderName} setSenderName={setSenderName} />
 
       <SendMessageButtonWrapper>
         <SendMessageButton onClick={sendNewMessage} disabled={!canSendMessage}>
@@ -48,10 +43,6 @@ export const NewMessagePage: React.FC = () => {
 };
 
 export const SectionTitle = styled("p", {});
-
-const Images = styled("div", {});
-
-const UploadImageArea = styled("input", {});
 
 const SendMessageButton = styled("button", {});
 
