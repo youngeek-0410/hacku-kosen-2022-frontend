@@ -2,10 +2,24 @@ import React from "react";
 
 import { styled } from "../../stitches.config";
 
-export const SpotifyMusicSelect: React.FC = () => {
+import { SpotifyMusic } from "./type";
+
+type Props = {
+  spotifyMusic: SpotifyMusic | null;
+  onChange: (spotifyMusic: SpotifyMusic) => void;
+};
+export const SpotifyMusicSelect: React.FC<Props> = (props) => {
+  if (!props.spotifyMusic) {
+    // TODO: いい感じの登録導線を出す
+    return <div>WIP: 曲を設定する(いい感じの登録導線を出す予定)</div>;
+  }
+
+  console.log(props.spotifyMusic);
   return (
     <Base>
-      <MusicAndArtistName>おもかげ - Vaundy</MusicAndArtistName>
+      <MusicAndArtistName>
+        {props.spotifyMusic?.name} - {props.spotifyMusic?.artist.name}
+      </MusicAndArtistName>
       <EditButton>変更する</EditButton>
     </Base>
   );
