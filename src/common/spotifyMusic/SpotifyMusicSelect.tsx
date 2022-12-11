@@ -11,6 +11,7 @@ type Props = {
 export const SpotifyMusicSelect: React.FC<Props> = (props) => {
   if (!props.spotifyMusic) {
     // TODO: いい感じの登録導線を出す
+    // NOTE: 初めにランダムに曲を設定するという手もある？
     return <div>WIP: 曲を設定する(いい感じの登録導線を出す予定)</div>;
   }
 
