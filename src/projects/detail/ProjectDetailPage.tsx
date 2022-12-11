@@ -12,7 +12,7 @@ export const ProjectDetailPage: React.FC = () => {
   const router = useRouter();
   const { project_id } = router.query;
 
-  const newMessage = () => {
+  const moveNewMessage = () => {
     router.push(`/projects/${project_id}/new_message`);
   };
   return (
@@ -22,7 +22,7 @@ export const ProjectDetailPage: React.FC = () => {
       <MusicEdit></MusicEdit>
       <BrowseMessage></BrowseMessage>
       <BrowseImage></BrowseImage>
-      <NewMessageButton onClick={newMessage}>思いをとどける</NewMessageButton>
+      <NewMessageButton onClick={moveNewMessage}>思いをとどける</NewMessageButton>
     </>
   );
 };
