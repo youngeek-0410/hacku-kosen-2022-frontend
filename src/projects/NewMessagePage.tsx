@@ -9,7 +9,6 @@ import { TextMessageEdit } from "./TextMessageEdit";
 const callMessageApi = (textMessage: string, senderName: string, imageMessage?: string) => {
   return alert(`text: ${textMessage} sender: ${senderName} image: ${imageMessage}`);
 };
-const senderNamePlaceholder = "山田 花子";
 
 export const NewMessagePage: React.FC = () => {
   const [textMessage, setTextMessage] = useState("");
