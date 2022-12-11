@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import { NewMessagePage } from "../projects/NewMessagePage";
+import { NewMessagePage } from "../../../projects/NewMessagePage";
 
 const Page: NextPage<{}> = (props) => {
   return <NewMessagePage {...props} />;

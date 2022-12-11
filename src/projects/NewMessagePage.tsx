@@ -1,41 +1,63 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 import { styled } from "../stitches.config";
 
+import { SenderNameEdit } from "./SenderNameEdit";
+import { TextMessageEdit } from "./TextMessageEdit";
+
+const callMessageApi = (textMessage: string, senderName: string, imageMessage?: string) => {
+  return alert(`text: ${textMessage} sender: ${senderName} image: ${imageMessage}`);
+};
+const senderNamePlaceholder = "山田 花子";
+
 export const NewMessagePage: React.FC = () => {
+  const [textMessage, setTextMessage] = useState("");
+  const [senderName, setSenderName] = useState("");
+
+  const router = useRouter();
+  const { project_id } = router.query;
+
+  const sendNewMessage = () => {
+    if (!canSendMessage) return;
+    callMessageApi(textMessage, senderName);
+
+    router.push(`/projects/${project_id}`);
+  };
+
+  const canSendMessage = textMessage !== "" && senderName !== "";
+
   return (
     <div>
-      <SectionTitle>送るメッセージを入力してください</SectionTitle>
-      <InputTextMessage />
+      <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
+
       <SectionTitle>思い出の写真をアップロードしてください</SectionTitle>
       <Images>
-        <UploadImages type="file" accept="image/*" multiple />
+        <UploadImageArea type="file" accept="image/*" multiple />
+        <UploadedImage src=""></UploadedImage>
       </Images>
-      <SectionTitle>あなたのお名前をどうぞ</SectionTitle>
-      <InputSenderName />
+
+      <SenderNameEdit senderName={senderName} setSenderName={setSenderName}></SenderNameEdit>
+
       <SendMessageButtonWrapper>
-        <SendMessageButton>思いをとどける</SendMessageButton>
+        <SendMessageButton onClick={sendNewMessage} disabled={!canSendMessage}>
+          思いをとどける
+        </SendMessageButton>
       </SendMessageButtonWrapper>
     </div>
   );
 };
 
-const SectionTitle = styled("p", {});
-
-const InputTextMessage = styled("textarea", {
-  width: "100%",
-});
-
-const InputSenderName = styled("input", {
-  width: "100%",
-});
+export const SectionTitle = styled("p", {});
 
 const Images = styled("div", {});
 
-const UploadImages = styled("input", {});
+const UploadImageArea = styled("input", {});
 
 const SendMessageButton = styled("button", {});
 
 const SendMessageButtonWrapper = styled("div", {
   textAlign: "center",
 });
+
+const UploadedImage = styled("img", {});
