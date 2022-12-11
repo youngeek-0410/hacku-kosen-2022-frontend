@@ -11,3 +11,5 @@ export type SpotifyMusic = {
     external_url: string; // アーティストのSpotifyページのURL
   };
 };
+
+export type SpotifyApiAccessToken = string;
