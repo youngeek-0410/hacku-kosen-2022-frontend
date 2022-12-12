@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
@@ -18,22 +19,30 @@ export const NewMessagePage: React.FC = () => {
   const [textMessage, setTextMessage] = useState("");
   const [senderName, setSenderName] = useState("");
 
-  const sendMessage = () => {
+  const canSendMessage = textMessage !== "" && senderName !== "";
+
+  const onClickSendMessage = () => {
     if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
     callMessageApi(textMessage, senderName);
 
     router.push(`/projects/${project_id}`);
   };
 
-  const canSendMessage = textMessage !== "" && senderName !== "";
-
   return (
     <>
+      <BackButton
+        href={{
+          pathname: "/projects/[project_id]",
+          query: { project_id: project_id },
+        }}
+      >
+        もどる
+      </BackButton>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
       <SenderNameEdit senderName={senderName} onChange={setSenderName} />
 
-      <SendMessageButton onClick={sendMessage} disabled={!canSendMessage}>
+      <SendMessageButton onClick={onClickSendMessage} disabled={!canSendMessage}>
         思いをとどける
       </SendMessageButton>
     </>
@@ -46,3 +55,5 @@ const SendMessageButton = styled("button", {
   display: "block",
   margin: "0 auto",
 });
+
+const BackButton = styled(Link, {});
