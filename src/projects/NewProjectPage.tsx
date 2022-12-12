@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../stitches.config";
 
-const callApi = (receiverName: string) => {
-  return "abcdefg";
+type CreateProjectResponse = {
+  project_id: string;
+};
+
+const createProjectApiUrl = "https://api/projects";
+
+const createNewProject = (receiverName: string) => {
+  async () => {
+    const requestConfig: AxiosRequestConfig = {
+      url: createProjectApiUrl,
+      method: "POST",
+      data: receiverName,
+    };
+    const project_id = await axios.request<CreateProjectResponse>(requestConfig);
+    return project_id;
+  };
 };
 
 const receiverNamePlaceholder = "山田 太郎";
@@ -15,7 +30,7 @@ export const NewProjectPage: React.FC = () => {
 
   const registerProject = () => {
     if (!canRegister) return;
-    const project_id = callApi(receiverName);
+    const project_id = createNewProject(receiverName);
     router.push(`/projects/${project_id}`);
   };
 
