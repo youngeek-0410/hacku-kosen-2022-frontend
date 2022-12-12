@@ -1,10 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { styled } from "../../stitches.config";
 
 import { BrowseMessage } from "./BrowseMessage";
-import { CopyProjectLink } from "./EditProjectLink";
+import { CopyProjectLink } from "./CopyProjectLink";
 import { MusicEdit } from "./MusicEdit";
 
 // API call
@@ -17,24 +18,27 @@ export const ProjectDetailPage: React.FC = () => {
   const { project_id } = router.query;
   const receiverName = getReceiverName();
 
-  const moveNewMessage = () => {
-    router.push(`/projects/${project_id}/new_message`);
-  };
-
   return (
     <>
       <ReceiverName>{receiverName}さんへの色紙</ReceiverName>
       <CopyProjectLink />
       <MusicEdit />
       <BrowseMessage />
-      <NewMessageButton onClick={moveNewMessage}>思いをとどける</NewMessageButton>
+      <NewMessageLink
+        href={{
+          pathname: "/projects/[project_id]/new_message",
+          query: { project_id: project_id },
+        }}
+      >
+        思いをとどける
+      </NewMessageLink>
     </>
   );
 };
 
 const ReceiverName = styled("h2", {});
 
-const NewMessageButton = styled("button", {
+const NewMessageLink = styled(Link, {
   display: "block",
   margin: "0 auto",
 });

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -19,15 +20,20 @@ export const TextMessagesPage: React.FC = () => {
 
   return (
     <>
-      <BackButton onClick={onClick}>もどる</BackButton>
+      <BackButton
+        href={{
+          pathname: "/projects/[project_id]",
+          query: { project_id: project_id },
+        }}
+      >
+        もどる
+      </BackButton>
       <Title>{count}件のメッセージ</Title>
-      <Texts></Texts>
+      <div></div>
     </>
   );
 };
 
 const Title = styled("h2", {});
 
-const Texts = styled("div", {});
-
-const BackButton = styled("button", {});
+const BackButton = styled(Link, {});

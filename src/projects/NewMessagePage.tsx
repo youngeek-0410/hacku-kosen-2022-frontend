@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
@@ -27,13 +28,20 @@ export const NewMessagePage: React.FC = () => {
     router.push(`/projects/${project_id}`);
   };
 
-  const onClickBackPage = () => {
+  const onClickBackButton = () => {
     router.push(`/projects/${project_id}`);
   };
 
   return (
     <>
-      <BackButton onClick={onClickBackPage}>もどる</BackButton>
+      <BackButton
+        href={{
+          pathname: "/projects/[project_id]",
+          query: { project_id: project_id },
+        }}
+      >
+        もどる
+      </BackButton>
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
       <SenderNameEdit senderName={senderName} onChange={setSenderName} />
@@ -52,4 +60,4 @@ const SendMessageButton = styled("button", {
   margin: "0 auto",
 });
 
-const BackButton = styled("button", {});
+const BackButton = styled(Link, {});

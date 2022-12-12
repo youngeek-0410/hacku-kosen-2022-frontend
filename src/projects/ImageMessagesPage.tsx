@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -11,23 +12,24 @@ export const ImageMessagesPage: React.FC = () => {
   const router = useRouter();
   const { project_id } = router.query;
 
-  const onClick = () => {
-    router.push(`/projects/${project_id}`);
-  };
-
   const count = getCount();
 
   return (
     <>
-      <BackButton onClick={onClick}>もどる</BackButton>
+      <BackButton
+        href={{
+          pathname: "/projects/[project_id]",
+          query: { project_id: project_id },
+        }}
+      >
+        もどる
+      </BackButton>
       <Title>{count}件のメッセージ</Title>
-      <Images></Images>
+      <div></div>
     </>
   );
 };
 
 const Title = styled("h2", {});
 
-const Images = styled("div", {});
-
-const BackButton = styled("button", {});
+const BackButton = styled(Link, {});
