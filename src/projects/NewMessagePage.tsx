@@ -28,10 +28,6 @@ export const NewMessagePage: React.FC = () => {
     router.push(`/projects/${project_id}`);
   };
 
-  const onClickBackButton = () => {
-    router.push(`/projects/${project_id}`);
-  };
-
   return (
     <>
       <BackButton

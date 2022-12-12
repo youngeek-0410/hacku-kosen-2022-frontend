@@ -12,10 +12,6 @@ export const TextMessagesPage: React.FC = () => {
   const router = useRouter();
   const { project_id } = router.query;
 
-  const onClick = () => {
-    router.push(`/projects/${project_id}`);
-  };
-
   const count = getCount();
 
   return (
