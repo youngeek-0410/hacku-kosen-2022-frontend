@@ -1,26 +1,54 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../../stitches.config";
+import { backendApiUrl } from "../../../api";
+import { Project } from "../type";
 
 import { BrowseMessage } from "./BrowseMessage";
 import { CopyProjectLink } from "./CopyProjectLink";
 import { MusicEdit } from "./MusicEdit";
 
-// API call
-const getReceiverName = () => {
-  return "山田 太郎";
+type GetProjectDataRequest = {
+  text_message_limit: 3;
+  image_message_limit: number;
 };
 
-export const ProjectDetailPage: React.FC = () => {
+type GetProjectDataResponse = Project;
+
+type Props = {
+  project: Project;
+};
+
+export const getProjectData = async (project_id: string): Promise<GetProjectDataResponse> => {
+  const params: GetProjectDataRequest = {
+    text_message_limit: 3,
+    image_message_limit: 5,
+  };
+
+  const requestConfig: AxiosRequestConfig = {
+    url: `${backendApiUrl}/api/projects/${project_id}/`,
+    method: "GET",
+    params: {
+      params,
+    },
+  };
+
+  const { data, status } = await axios.request<GetProjectDataResponse>(requestConfig);
+  if (status !== 200) throw new Error("failed to get project data");
+  return data;
+};
+
+export const ProjectDetailPage: React.FC<Props> = (props) => {
+  console.log(props.project);
   const router = useRouter();
   const { project_id } = router.query;
-  const receiverName = getReceiverName();
 
   return (
     <>
-      <ReceiverName>{receiverName}さんへの色紙</ReceiverName>
+      <ReceiverName>{props.project.receiver_name}さんへの色紙</ReceiverName>
       <CopyProjectLink />
       <MusicEdit />
       <BrowseMessage />
