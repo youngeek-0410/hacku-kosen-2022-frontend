@@ -15,8 +15,12 @@ type CreateProjectResponse = {
 
 const createProject = async (receiverName: string): Promise<string> => {
   const requestConfig: AxiosRequestConfig<CreateProjectRequest> = {
-    url: `${backendApiUrl}/api/projects`,
+    url: `${backendApiUrl}/api/projects/`,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
     data: {
       receiver_name: receiverName,
     },
