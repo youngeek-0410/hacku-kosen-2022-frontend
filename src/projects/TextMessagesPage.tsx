@@ -1,19 +1,50 @@
+import axios, { AxiosRequestConfig } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
+import { backendApiUrl } from "../../api";
 import { styled } from "../stitches.config";
 
-const getCount = () => {
-  return 10;
+import { TextMessage } from "./type";
+
+type GetTextMessagesRequest = {
+  limit: 100;
 };
 
-export const TextMessagesPage: React.FC = () => {
+type GetTextMessagesResponse = {
+  count: number;
+  items: TextMessage[];
+};
+
+type Props = {
+  count: number;
+  items: TextMessage[];
+};
+
+export const getTextMessages = async (project_id: string): Promise<GetTextMessagesResponse> => {
+  const params: GetTextMessagesRequest = {
+    limit: 100,
+  };
+
+  const requestConfig: AxiosRequestConfig = {
+    url: `${backendApiUrl}/api/projects/${project_id}/text_messages/`,
+    method: "GET",
+    params: {
+      params,
+    },
+  };
+
+  const { data, status } = await axios.request<GetTextMessagesResponse>(requestConfig);
+  console.log(data);
+  if (status !== 200) throw new Error("failed to get messages");
+  return data;
+};
+
+export const TextMessagesPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
-
-  const count = getCount();
-
+  console.log(props);
   return (
     <>
       <BackButton
@@ -24,8 +55,15 @@ export const TextMessagesPage: React.FC = () => {
       >
         もどる
       </BackButton>
-      <Title>{count}件のメッセージ</Title>
-      <div></div>
+      <Title>{props.count}件のメッセージ</Title>
+      {props.items.map((textMessageData, i) => {
+        return (
+          <div key={i}>
+            {/* <p>{textMessageData.text}</p>
+            <p>{textMessageData.sender_name}</p> */}
+          </div>
+        );
+      })}
     </>
   );
 };

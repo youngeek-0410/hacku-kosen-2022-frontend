@@ -1,15 +1,33 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import { TextMessagesPage } from "../../../projects/TextMessagesPage";
+import { getTextMessages, TextMessagesPage } from "../../../projects/TextMessagesPage";
+import { TextMessage } from "../../../projects/type";
 
-const Page: NextPage<{}> = (props) => {
+type Props = {
+  count: number;
+  items: TextMessage[];
+};
+
+const Page: NextPage<Props> = (props) => {
   return <TextMessagesPage {...props} />;
 };
 
 export default Page;
 
-export const getServerSideProps: GetServerSideProps<{}> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  const { project_id } = ctx.query;
+  if (typeof project_id !== "string") {
+    return {
+      notFound: true,
+    };
+  }
+
+  const { count, items } = await getTextMessages(project_id);
+  console.log(items);
   return {
-    props: {},
+    props: {
+      count,
+      items,
+    },
   };
 };
