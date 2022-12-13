@@ -1,10 +1,29 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../stitches.config";
+import { backendApiUrl } from "../../api";
 
-const callApi = (receiverName: string) => {
-  return "abcdefg";
+type CreateProjectRequest = {
+  receiver_name: string;
+};
+
+type CreateProjectResponse = {
+  project_id: string;
+};
+
+const createProject = async (receiverName: string): Promise<string> => {
+  const requestConfig: AxiosRequestConfig<CreateProjectRequest> = {
+    url: `${backendApiUrl}/api/projects`,
+    method: "POST",
+    data: {
+      receiver_name: receiverName,
+    },
+  };
+  const { data, status } = await axios.request<CreateProjectResponse>(requestConfig);
+  if (status !== 200) throw new Error("failed to create project");
+  return data.project_id;
 };
 
 const receiverNamePlaceholder = "山田 太郎";
@@ -13,9 +32,9 @@ export const NewProjectPage: React.FC = () => {
   const [receiverName, setReceiverName] = useState("");
   const router = useRouter();
 
-  const registerProject = () => {
+  const registerProject = async () => {
     if (!canRegister) return;
-    const project_id = callApi(receiverName);
+    const project_id = await createProject(receiverName);
     router.push(`/projects/${project_id}`);
   };
 
