@@ -7,7 +7,7 @@ import { styled } from "../../stitches.config";
 import { backendApiUrl } from "../../../api";
 import { Project } from "../type";
 
-import { ProjectTopMessages } from "./BrowseMessage";
+import { ProjectTopMessages } from "./ProjectTopMessages";
 import { CopyProjectLink } from "./CopyProjectLink";
 import { MusicEdit } from "./MusicEdit";
 

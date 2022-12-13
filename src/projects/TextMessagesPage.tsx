@@ -4,16 +4,16 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
-const getCount = () => {
-  return 10;
+import { TextMessage } from "./type";
+
+type Props = {
+  count: number;
+  items: TextMessage[];
 };
 
-export const TextMessagesPage: React.FC = () => {
+export const TextMessagesPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
-
-  const count = getCount();
-
   return (
     <>
       <BackButton
@@ -24,8 +24,15 @@ export const TextMessagesPage: React.FC = () => {
       >
         もどる
       </BackButton>
-      <Title>{count}件のメッセージ</Title>
-      <div></div>
+      <Title>{props.count}件のメッセージ</Title>
+      {props.items.map((textMessageData, i) => {
+        return (
+          <div key={i}>
+            <p>{textMessageData.text}</p>
+            <p>{textMessageData.sender_name}</p>
+          </div>
+        );
+      })}
     </>
   );
 };

@@ -71,24 +71,44 @@ export const backendApiHandlers = [
   rest.get(`${backendApiUrl}/api/projects/:project_id/text_messages/`, (req, res, ctx) => {
     const resBody = {
       count: 10,
-      items: Array(10).map(() => {
-        return {
-          text: "おつかれ",
+      items: [
+        {
+          text: "お疲れ",
           sender_name: "山田 圭祐",
-        };
-      }),
+        },
+        {
+          text: "お疲れ",
+          sender_name: "山田 圭祐",
+        },
+        {
+          text: "お疲れ",
+          sender_name: "山田 圭祐",
+        },
+      ],
     };
     return res(ctx.status(200), ctx.json(resBody));
   }),
   rest.get(`${backendApiUrl}/api/projects/:project_id/image_messages/`, (req, res, ctx) => {
     const resBody = {
       count: 10,
-      items: Array(10).map(() => {
-        return {
+      items: [
+        {
           url: "https://via.placeholder.com/150",
           sender_name: "山田 圭祐",
-        };
-      }),
+        },
+        {
+          url: "https://via.placeholder.com/150",
+          sender_name: "山田 圭祐",
+        },
+        {
+          url: "https://via.placeholder.com/150",
+          sender_name: "山田 圭祐",
+        },
+        {
+          url: "https://via.placeholder.com/150",
+          sender_name: "山田 圭祐",
+        },
+      ],
     };
     return res(ctx.status(200), ctx.json(resBody));
   }),
