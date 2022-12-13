@@ -5,8 +5,8 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
     colors: {
       textPrimary: "#1C1B1A",
       textSecondary: "#3C3B3A",
-      musicBottun: "#1DB954",
-      backGround: "#FAF9F7",
+      musicButton: "#1DB954",
+      background: "#FAF9F7",
       messegeBackground: "#F3F2F0",
 
       yellow50: "#FEF9E7",
@@ -54,5 +54,6 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 export const globalStyles = globalCss({
   body: {
     margin: 0,
+    background: "$background",
   },
 });
