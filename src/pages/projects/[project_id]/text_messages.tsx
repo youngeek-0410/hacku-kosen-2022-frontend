@@ -23,7 +23,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   }
 
   const { count, items } = await getTextMessages(project_id);
-  console.log(items);
   return {
     props: {
       count,

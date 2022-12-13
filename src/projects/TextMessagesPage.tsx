@@ -36,7 +36,6 @@ export const getTextMessages = async (project_id: string): Promise<GetTextMessag
   };
 
   const { data, status } = await axios.request<GetTextMessagesResponse>(requestConfig);
-  console.log(data);
   if (status !== 200) throw new Error("failed to get messages");
   return data;
 };
@@ -44,7 +43,6 @@ export const getTextMessages = async (project_id: string): Promise<GetTextMessag
 export const TextMessagesPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
-  console.log(props);
   return (
     <>
       <BackButton
@@ -59,8 +57,8 @@ export const TextMessagesPage: React.FC<Props> = (props) => {
       {props.items.map((textMessageData, i) => {
         return (
           <div key={i}>
-            {/* <p>{textMessageData.text}</p>
-            <p>{textMessageData.sender_name}</p> */}
+            <p>{textMessageData.text}</p>
+            <p>{textMessageData.sender_name}</p>
           </div>
         );
       })}
