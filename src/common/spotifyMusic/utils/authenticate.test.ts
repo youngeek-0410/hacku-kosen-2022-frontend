@@ -1,19 +1,10 @@
 import { setupServer } from "msw/node";
-import { rest } from "msw";
 
-import { authenticate, authSpotifyApiUrl } from "./authenticate";
+import { spotifyApiHandlers } from "../../../mocks/handlers";
 
-const mockServer = setupServer(
-  rest.post(authSpotifyApiUrl, (req, res, ctx) => {
-    const resBody = {
-      access_token: "token",
-      token_type: "Bearer",
-      expires_in: 3600,
-    };
+import { authenticate } from "./authenticate";
 
-    return res(ctx.status(200), ctx.json(resBody));
-  })
-);
+const mockServer = setupServer(...spotifyApiHandlers);
 
 describe("authenticate spotify api", () => {
   beforeAll(() => {

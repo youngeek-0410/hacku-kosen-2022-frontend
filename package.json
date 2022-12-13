@@ -53,5 +53,8 @@
     "storybook": "^6.5.14",
     "ts-node": "^10.7.0",
     "typescript": "^4.5.4"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
