@@ -22,7 +22,7 @@ export type TextMessage = {
 
 export type ImageMessage = {
   type: "image";
-  text: string;
+  url: string;
   sender_name: string;
 };
 

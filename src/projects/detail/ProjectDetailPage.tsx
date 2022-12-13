@@ -7,7 +7,7 @@ import { styled } from "../../stitches.config";
 import { backendApiUrl } from "../../../api";
 import { Project } from "../type";
 
-import { BrowseMessage } from "./BrowseMessage";
+import { ProjectTopMessages } from "./BrowseMessage";
 import { CopyProjectLink } from "./CopyProjectLink";
 import { MusicEdit } from "./MusicEdit";
 
@@ -46,12 +46,17 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
 
+  const messageData = {
+    textMessageData: props.project.text_messages,
+    imageMessageData: props.project.image_messages,
+  };
+
   return (
     <>
       <ReceiverName>{props.project.receiver_name}さんへの色紙</ReceiverName>
       <CopyProjectLink />
       <MusicEdit />
-      <BrowseMessage />
+      <ProjectTopMessages {...messageData} />
       <NewMessageLink
         href={{
           pathname: "/projects/[project_id]/new_message",
