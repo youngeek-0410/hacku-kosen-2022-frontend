@@ -38,7 +38,7 @@ export const ProjectTopMessages: React.FC<Props> = (props) => {
       {props.imageMessageData.items.map((imageData, i) => {
         return (
           <div key={i}>
-            <img src={imageData.url} alt="sended image" width={50} height={50} />
+            <img src={imageData.url} alt="picture sent" width={50} height={50} />
           </div>
         );
       })}

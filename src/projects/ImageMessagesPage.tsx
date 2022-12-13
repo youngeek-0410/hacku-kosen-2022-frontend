@@ -4,16 +4,16 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
-const getCount = () => {
-  return 15;
+import { ImageMessage } from "./type";
+
+type Props = {
+  count: number;
+  items: ImageMessage[];
 };
 
-export const ImageMessagesPage: React.FC = () => {
+export const ImageMessagesPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
-
-  const count = getCount();
-
   return (
     <>
       <BackButton
@@ -24,8 +24,10 @@ export const ImageMessagesPage: React.FC = () => {
       >
         もどる
       </BackButton>
-      <Title>{count}件のメッセージ</Title>
-      <div></div>
+      <Title>{props.count}件の写真</Title>
+      {props.items.map((imageMessageData, i) => {
+        return <img key={i} src={imageMessageData.url} alt="picture sent" />;
+      })}
     </>
   );
 };
