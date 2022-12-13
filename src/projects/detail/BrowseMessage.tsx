@@ -35,6 +35,13 @@ export const ProjectTopMessages: React.FC<Props> = (props) => {
       })}
       <SectionTitle>{props.imageMessageData.count}枚の写真</SectionTitle>
       <BrowseAllLink href={`/projects/${project_id}/image_messages`}>すべて見る</BrowseAllLink>
+      {props.imageMessageData.items.map((imageData, i) => {
+        return (
+          <div key={i}>
+            <img src={imageData.url} alt="sended image" width={50} height={50} />
+          </div>
+        );
+      })}
     </>
   );
 };
