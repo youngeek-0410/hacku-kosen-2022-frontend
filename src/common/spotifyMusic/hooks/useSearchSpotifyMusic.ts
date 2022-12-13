@@ -26,6 +26,7 @@ type Track = {
       url: string;
     }[];
   };
+  uri: string;
   name: string;
   preview_url: string;
   external_urls: {
@@ -80,6 +81,7 @@ export const useSearchSpotifyMusic = (query: string): SpotifyMusic[] => {
 
 const serializeSpotifyMusic = (track: Track): SpotifyMusic => {
   const music: SpotifyMusic = {
+    uri: track.uri,
     name: track.name,
     external_url: track.external_urls.spotify,
     preview_url: track.preview_url,
