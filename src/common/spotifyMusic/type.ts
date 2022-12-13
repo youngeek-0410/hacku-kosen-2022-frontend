@@ -1,4 +1,5 @@
 export type SpotifyMusic = {
+  uri: string; // Spotifyサービス上での楽曲識別子
   name: string; // 楽曲名
   external_url: string; // 楽曲のSpotifyページのURL
   preview_url: string; // 30sのサンプル再生のURL

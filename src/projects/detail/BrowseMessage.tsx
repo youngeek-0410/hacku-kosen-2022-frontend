@@ -4,33 +4,46 @@ import React from "react";
 
 import { styled } from "../../stitches.config";
 import { SectionTitle } from "../NewMessagePage";
+import { ImageMessage, TextMessage } from "../type";
 
-const getTextCount = () => {
-  return 10;
+type Props = {
+  textMessageData: {
+    count: number;
+    items: TextMessage[];
+  };
+  imageMessageData: {
+    count: number;
+    items: ImageMessage[];
+  };
 };
 
-const getImageCount = () => {
-  return 15;
-};
-
-export const BrowseMessage: React.FC = () => {
+export const ProjectTopMessages: React.FC<Props> = (props) => {
   const router = useRouter();
   const project_id = router.query.project_id;
 
-  const textCount = getTextCount();
-  const imageCount = getImageCount();
-
   return (
     <>
-      <SectionTitle>{textCount}件のメッセージ</SectionTitle>
+      <SectionTitle>{props.textMessageData.count}件のメッセージ</SectionTitle>
       <BrowseAllLink href={`/projects/${project_id}/text_messages`}>すべて見る</BrowseAllLink>
-      <Messages></Messages>
-      <SectionTitle>{imageCount}枚の写真</SectionTitle>
+      {props.textMessageData.items.map((messageData, i) => {
+        return (
+          <div key={i}>
+            <p>{messageData.text}</p>
+            <p>{messageData.sender_name}</p>
+          </div>
+        );
+      })}
+      <SectionTitle>{props.imageMessageData.count}枚の写真</SectionTitle>
       <BrowseAllLink href={`/projects/${project_id}/image_messages`}>すべて見る</BrowseAllLink>
+      {props.imageMessageData.items.map((imageData, i) => {
+        return (
+          <div key={i}>
+            <img src={imageData.url} alt="sended image" width={50} height={50} />
+          </div>
+        );
+      })}
     </>
   );
 };
-
-const Messages = styled("div", {});
 
 export const BrowseAllLink = styled(Link, {});

@@ -14,6 +14,7 @@ const meta: Meta = {
 
 export default meta;
 const exampleSpotifyMusic: SpotifyMusic = {
+  uri: "",
   name: "おもかげ",
   preview_url:
     "https://p.scdn.co/mp3-preview/7fa8d4a77dacfc513f2be625bbdb9bc48f0bbed4?cid=ce4decf85a2149efa2da06676bce5ec8",
