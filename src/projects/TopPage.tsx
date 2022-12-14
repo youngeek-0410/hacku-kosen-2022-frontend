@@ -10,7 +10,7 @@ export const TopPage: React.FC = () => {
   };
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <CenteringWrapper>
         <Box></Box>
         <Catchphrase>
@@ -42,19 +42,20 @@ export const TopPage: React.FC = () => {
   );
 };
 
-export const Header = styled("header", {
-  height: "62px",
-  position: "sticky",
-  top: "0",
-  background: "white",
-  borderBottom: "1px solid #DADADA",
-});
+// export const Header = styled("header", {
+//   height: "62px",
+//   position: "fixed",
+//   top: "0",
+//   background: "white",
+//   borderBottom: "1px solid #DADADA",
+//   zIndex: "999",
+// });
 
 const Box = styled("div", {
   width: "226px",
   height: "59px",
   background: "#D9D9D9",
-  margin: "60px auto 0",
+  margin: "20% auto 0",
 });
 
 const Catchphrase = styled("p", {
@@ -63,6 +64,7 @@ const Catchphrase = styled("p", {
   fontFamily: "Zen Kaku Gothic New",
   width: "100%",
   margin: "30px auto 0",
+  color: "$textPrimary",
 });
 
 export const CenteringWrapper = styled("div", {
@@ -77,6 +79,7 @@ const NewProjectButton = styled("button", {
   fontWeight: "700",
   fontSize: "20px",
   width: "306px",
+  maxWidth: "100%",
   height: "61px",
   borderRadius: "44px",
   border: "none",
@@ -91,7 +94,7 @@ const SectionTitle = styled("p", {
   textAlign: "left",
   fontSize: "20px",
   fontWeight: "700",
-  color: "#1C1B1A",
+  color: "$textPrimary",
   margin: "20px auto 0",
 });
 
@@ -99,4 +102,5 @@ const SectionText = styled("p", {
   fontSize: "14px",
   lineHeight: "20px",
   textAlign: "left",
+  color: "$textPrimary",
 });
