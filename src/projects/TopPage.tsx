@@ -80,7 +80,6 @@ const NewProjectButton = styled("button", {
   height: "61px",
   borderRadius: "44px",
   border: "none",
-  textAlign: "center",
   margin: "30px auto",
 });
 
@@ -93,15 +92,11 @@ const SectionTitle = styled("p", {
   fontSize: "20px",
   fontWeight: "700",
   color: "#1C1B1A",
-  width: "318px",
-  display: "inline-block",
   margin: "20px auto 0",
 });
 
 const SectionText = styled("p", {
-  width: "318px",
   fontSize: "14px",
   lineHeight: "20px",
   textAlign: "left",
-  display: "inline-block",
 });
