@@ -28,18 +28,16 @@ export const TopPage: React.FC = () => {
           <br />
           デジタルにしかできない表現を。
         </Catchphrase>
-      </CenteringWrapper>
-      <CenteringWrapper>
         <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+        <Section>
+          <SectionTitle>Cloveeeeとは？</SectionTitle>
+          <SectionText>
+            以下説明文
+            <br />
+            aaaaa
+          </SectionText>
+        </Section>
       </CenteringWrapper>
-      <Section>
-        <SectionTitle>Cloveeeeとは？</SectionTitle>
-        <SectionText>
-          以下説明文
-          <br />
-          aaaaa
-        </SectionText>
-      </Section>
     </>
   );
 };
@@ -56,21 +54,21 @@ const Box = styled("div", {
   width: "226px",
   height: "59px",
   background: "#D9D9D9",
-  margin: "126px auto 0",
+  margin: "60px auto 0",
 });
 
 const Catchphrase = styled("p", {
   textAlign: "left",
   fontSize: "14px",
   fontFamily: "Zen Kaku Gothic New",
-  width: "318px",
-  height: "140px",
-  display: "inline-block",
+  width: "100%",
   margin: "30px auto 0",
 });
 
-const CenteringWrapper = styled("div", {
+export const CenteringWrapper = styled("div", {
   textAlign: "center",
+  width: "80%",
+  margin: "0 auto",
 });
 
 const NewProjectButton = styled("button", {
@@ -88,7 +86,6 @@ const NewProjectButton = styled("button", {
 
 const Section = styled("div", {
   textAlign: "center",
-  mergin: "20px auto 0",
 });
 
 const SectionTitle = styled("p", {
