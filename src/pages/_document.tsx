@@ -1,13 +1,15 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { globalStyles } from "../stitches.config";
+import { getCssText, globalStyles } from "../stitches.config";
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
     globalStyles();
     return (
       <Html>
-        <Head></Head>
+        <Head>
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+        </Head>
         <body>
           <Main />
           <NextScript />
