@@ -40,29 +40,11 @@ export const TopPage: React.FC = () => {
           aaaaa
         </SectionText>
       </Section>
-      <Section>
-        <SectionTitle>Cloveeeeとは？</SectionTitle>
-        <SectionText>
-          以下説明文
-          <br />
-          aaaaa
-          <br />
-          hfahdjfhjhsdjf
-        </SectionText>
-      </Section>
-      <Section>
-        <SectionTitle>Cloveeeeとは？</SectionTitle>
-        <SectionText>
-          以下説明文
-          <br />
-          aaaaa
-        </SectionText>
-      </Section>
     </>
   );
 };
 
-const Header = styled("header", {
+export const Header = styled("header", {
   height: "62px",
   position: "sticky",
   top: "0",
