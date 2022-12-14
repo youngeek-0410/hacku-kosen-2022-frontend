@@ -11,7 +11,7 @@ export const TopPage: React.FC = () => {
   return (
     <>
       {/* <Header></Header> */}
-      <CenteringWrapper>
+      <Container>
         <Box></Box>
         <Catchphrase>
           感謝の言葉。
@@ -37,7 +37,7 @@ export const TopPage: React.FC = () => {
             aaaaa
           </SectionText>
         </Section>
-      </CenteringWrapper>
+      </Container>
     </>
   );
 };
@@ -67,8 +67,7 @@ const Catchphrase = styled("p", {
   color: "$textPrimary",
 });
 
-export const CenteringWrapper = styled("div", {
-  textAlign: "center",
+const Container = styled("div", {
   width: "80%",
   margin: "0 auto",
 });

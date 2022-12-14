@@ -105,9 +105,9 @@ const InputName = styled("input", {
   },
 });
 
-const InputNameWrapper = styled("div", {
-  marginTop: "16px",
-});
+// const InputNameWrapper = styled("div", {
+//   marginTop: "16px",
+// });
 
 const NewProjectButton = styled("button", {
   color: "#FFFFFF",
