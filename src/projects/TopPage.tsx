@@ -49,6 +49,7 @@ export const Header = styled("header", {
   position: "sticky",
   top: "0",
   background: "white",
+  borderBottom: "1px solid #DADADA",
 });
 
 const Box = styled("div", {
