@@ -30,7 +30,7 @@ export const TopPage: React.FC = () => {
         </Catchphrase>
         <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
         <Section>
-          <SectionTitle>Cloveeeeとは？</SectionTitle>
+          <SectionTitle>Cloveeeeとは?</SectionTitle>
           <SectionText>
             以下説明文
             <br />
