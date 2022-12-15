@@ -10,7 +10,7 @@ export const ProjectSetting: React.FC = () => {
   return (
     <>
       <SectionTitle>
-        <ProjectHeading2>プロジェクト設定</ProjectHeading2>
+        <ProjectHeading2>サイト設定</ProjectHeading2>
         <ProjectParagraph>オリジナルWebサイトに関する設定ができます。</ProjectParagraph>
       </SectionTitle>
 
