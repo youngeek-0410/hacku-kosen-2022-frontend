@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-import { backendApiUrl } from "../../api";
+import { backendApiUrl } from "../utils/apis";
 import { authSpotifyApiUrl } from "../common/spotifyMusic/utils/authenticate";
 
 export const spotifyApiHandlers = [

@@ -1,51 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../../stitches.config";
-import { backendApiUrl, getBackendApiKey } from "../../../api";
 import { Project } from "../type";
-// import { SpotifyMusicSelect } from "../../common/spotifyMusic/components/SpotifyMusicSelect";
 
 import { ProjectTopMessages } from "./ProjectTopMessages";
 import { CopyProjectLink } from "./CopyProjectLink";
-// import { SampleMusic } from "../../common/spotifyMusic/example";
 import { MusicEdit } from "./MusicEdit";
-
-type GetProjectDataRequest = {
-  text_message_limit: 3;
-  image_message_limit: number;
-};
-
-type GetProjectDataResponse = Project;
 
 type Props = {
   project: Project;
-};
-
-export const getProjectData = async (project_id: string): Promise<GetProjectDataResponse> => {
-  const params: GetProjectDataRequest = {
-    text_message_limit: 3,
-    image_message_limit: 5,
-  };
-
-  const requestConfig: AxiosRequestConfig = {
-    url: `${backendApiUrl}/api/projects/${project_id}/`,
-    method: "GET",
-    params: {
-      params,
-    },
-    headers: {
-      Accept: "application/json",
-      "content-type": "application/json",
-      "x-api-key": getBackendApiKey(),
-    },
-  };
-
-  const { data, status } = await axios.request<GetProjectDataResponse>(requestConfig);
-  if (status !== 200) throw new Error("failed to get project data");
-  return data;
 };
 
 export const ProjectDetailPage: React.FC<Props> = (props) => {

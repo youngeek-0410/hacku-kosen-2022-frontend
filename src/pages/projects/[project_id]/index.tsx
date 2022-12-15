@@ -3,8 +3,8 @@ import { GetServerSideProps, NextPage } from "next";
 import { authenticate } from "../../../common/spotifyMusic/utils/authenticate";
 import { ProjectDetailPage } from "../../../projects/detail/ProjectDetailPage";
 import { GeneralPageProps } from "../../_app";
-import { getProjectData } from "../../../projects/detail/ProjectDetailPage";
 import { Project } from "../../../projects/type";
+import { getProject } from "../../../utils/apis";
 
 type Props = {
   project: Project;
@@ -19,13 +19,8 @@ export default Page;
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const spotifyApiAccessToken = await authenticate();
   const { project_id } = ctx.query;
-  if (typeof project_id !== "string") {
-    return {
-      notFound: true,
-    };
-  }
+  const project = await getProject(project_id as string);
 
-  const project = await getProjectData(project_id);
   return {
     props: {
       spotifyApiAccessToken,
