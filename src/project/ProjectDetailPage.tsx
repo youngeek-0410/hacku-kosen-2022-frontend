@@ -4,9 +4,7 @@ import { styled } from "../stitches.config";
 
 import { Project } from "./type";
 import { ProjectSetting } from "./ProjectSetting";
-import { MusicEdit } from "./MusicEdit";
-import { SomeTextMessages } from "./SomeTextMessages";
-import { SomeImageMessages } from "./SomeImageMessage";
+import { ContentSetting } from "./ContentSetting";
 // import { Publication } from "./Publication";
 
 type Props = {
@@ -24,21 +22,18 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
 
       <hr />
 
-      {/* <Publication /> */}
-
       <ProjectSetting />
 
       <hr />
-      <MusicEdit />
-      <SomeTextMessages textMessageData={props.project.text_messages} />
-      <SomeImageMessages imageMessageData={props.project.image_messages} />
+
+      <ContentSetting {...props} />
     </Container>
   );
 };
 
 const Container = styled("div", {
   width: "85%",
-  margin: "0 auto 120px",
+  margin: "0 auto",
 });
 
 const ReceiverName = styled("h2", {

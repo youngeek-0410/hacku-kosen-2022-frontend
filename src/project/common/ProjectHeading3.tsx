@@ -5,22 +5,22 @@ import { styled } from "../../stitches.config";
 
 export const ProjectHeading3: React.FC<{ viewAllLink?: string }> = ({ viewAllLink, children }) => {
   return (
-    <Heading>
-      <Text>{children}</Text>
+    <Base>
+      <Heading3>{children}</Heading3>
       {viewAllLink ? <ViewAll href={viewAllLink} /> : null}
-    </Heading>
+    </Base>
   );
 };
 
-const Heading = styled("div", {
+const Base = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
 });
 
-const Text = styled("h2", {
+const Heading3 = styled("h3", {
   fontWeight: "400",
-  fontSize: "24px",
+  fontSize: "20px",
   color: "$textPrimary",
   margin: "0",
 });

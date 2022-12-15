@@ -2,59 +2,47 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
+import { ProjectHeading2 } from "./common/ProjectHeading2";
 import { ProjectHeading3 } from "./common/ProjectHeading3";
+import { ProjectParagraph } from "./common/ProjectParagraph";
 
 export const ProjectSetting: React.FC = () => {
-  const copyLink = () => {
-    const url = location.href;
-    navigator.clipboard.writeText(url);
-    // ポップアップを表示する？
-    alert("copied!");
-  };
-
   return (
-    <Base>
+    <>
+      <SectionTitle>
+        <ProjectHeading2>プロジェクト設定</ProjectHeading2>
+        <ProjectParagraph>オリジナルWebサイトに関する設定ができます。</ProjectParagraph>
+      </SectionTitle>
+
       <Section>
-        <ProjectHeading3>編集用リンクをコピー</ProjectHeading3>
-        <Description>色紙を記入してもらうには右のボタンからURLをコピーして共有してください</Description>
+        <ProjectHeading3>寄書き用リンクをコピー</ProjectHeading3>
+        <ProjectParagraph>寄書きを投稿してもらうには右のボタンからURLをコピーして共有してください</ProjectParagraph>
         {/* TODO: いい感じコピーできるコンポーネントを用意する */}
         {/*  <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>*/}
       </Section>
 
       <Section>
         <ProjectHeading3>プレビューをみる</ProjectHeading3>
-        <Description>下のリンクから完成予定のWebサイトを見ることが出来ます</Description>
+        <ProjectParagraph>下のリンクから完成予定のオリジナルWebサイトを見ることが出来ます</ProjectParagraph>
         {/* TODO: いい感じコピーできるコンポーネントを用意する */}
         {/*  <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>*/}
       </Section>
-    </Base>
+
+      <Section>
+        <ProjectHeading3>サイトを公開する</ProjectHeading3>
+        <ProjectParagraph>
+          下のリンクを押したあと最終確認を済ませるとオリジナルWebサイトを公開することができます
+        </ProjectParagraph>
+        {/* TODO: いい感じコピーできるコンポーネントを用意する */}
+        {/*  <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>*/}
+      </Section>
+    </>
   );
 };
 
-const Base = styled("div", {
-  // padding: "16px 0",
-});
-
 const Section = styled("div", {
-  // flex: 1,
-  margin: "30px 0",
-  // paddingRight: "4px",
+  margin: "16px 0",
 });
-
-const Description = styled("p", {
-  color: "$gray500",
-  fontWeight: "400",
-  fontSize: "14px",
-  margin: "0",
-});
-
-const LinkCopyButton = styled("button", {
-  minwidth: "80px",
-  minHeight: "32px",
-  color: "white",
-  background: "$yellow900",
-  fontWeight: "700",
-  fontSize: "12px",
-  border: "none",
-  borderRadius: "8px",
+const SectionTitle = styled("div", {
+  margin: "24px 0 36px",
 });

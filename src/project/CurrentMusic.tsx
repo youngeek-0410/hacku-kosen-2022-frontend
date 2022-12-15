@@ -1,11 +1,10 @@
 import React from "react";
 
-import { ProjectHeading3 } from "./common/ProjectHeading3";
+import { styled } from "../stitches.config";
 
-export const MusicEdit: React.FC = () => {
+export const CurrentMusic: React.FC = () => {
   return (
-    <>
-      <ProjectHeading3>思い出の音楽</ProjectHeading3>
+    <Base>
       <iframe
         style={{ borderRadius: "12px" }}
         src="https://open.spotify.com/embed/track/6uqewERWZ1vzfCcin1zFIp?utm_source=generator"
@@ -15,6 +14,10 @@ export const MusicEdit: React.FC = () => {
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
-    </>
+    </Base>
   );
 };
+
+const Base = styled("div", {
+  marginTop: "8px",
+});
