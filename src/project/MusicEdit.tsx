@@ -2,10 +2,12 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
+import { ProjectHeading3 } from "./common/ProjectHeading3";
+
 export const MusicEdit: React.FC = () => {
   return (
     <Container>
-      <Caption>思い出の音楽</Caption>
+      <ProjectHeading3>思い出の音楽</ProjectHeading3>
       <PlannedMusic></PlannedMusic>
     </Container>
   );

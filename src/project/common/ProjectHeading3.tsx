@@ -21,8 +21,8 @@ const Heading = styled("div", {
 });
 
 const Text = styled("h2", {
-  fontWeight: "700",
-  fontSize: "16px",
+  fontWeight: "400",
+  fontSize: "24px",
   color: "$textPrimary",
   margin: "0",
 });

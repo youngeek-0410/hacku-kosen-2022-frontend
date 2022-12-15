@@ -23,9 +23,7 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
       </ButtonWrapper>
 
       <CopyProjectLink />
-
-      <MusicEdit></MusicEdit>
-
+      <MusicEdit />
       <SomeTextMessages textMessageData={props.project.text_messages} />
       <SomeImageMessages imageMessageData={props.project.image_messages} />
     </Container>
@@ -34,9 +32,7 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
 
 const Container = styled("div", {
   width: "85%",
-  textAlign: "center",
   margin: "0 auto 120px",
-  position: "relative",
 });
 
 const ButtonWrapper = styled("div", {
@@ -53,7 +49,7 @@ const PreviewButton = styled("button", {
   width: "47%",
   minWidth: "154px",
   height: "39px",
-  border: "1px solid #8E6C2C",
+  border: "1px solid $yellow900",
   borderRadius: "44px",
   margin: "0 auto 0 0",
 });
@@ -71,7 +67,7 @@ const CompleteButton = styled("button", {
 });
 
 const ReceiverName = styled("h2", {
-  fontSize: "24px",
-  fontWeight: "700",
+  fontSize: "28px",
+  fontWeight: "400",
   textAlign: "left",
 });

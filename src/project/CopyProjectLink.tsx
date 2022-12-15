@@ -2,6 +2,8 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
+import { ProjectHeading3 } from "./common/ProjectHeading3";
+
 export const CopyProjectLink: React.FC = () => {
   const copyLink = () => {
     const url = location.href;
@@ -13,7 +15,7 @@ export const CopyProjectLink: React.FC = () => {
   return (
     <Container>
       <TextWrapper>
-        <SectionTitle>編集用リンクをコピー</SectionTitle>
+        <ProjectHeading3>編集用リンクをコピー</ProjectHeading3>
         <CopyExplanation>色紙を記入してもらうには右のボタンからURLをコピーして共有してください</CopyExplanation>
       </TextWrapper>
       <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>
@@ -21,25 +23,11 @@ export const CopyProjectLink: React.FC = () => {
   );
 };
 
-const Container = styled("div", {
-  width: "100%",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-});
+const Container = styled("div", {});
 
 const TextWrapper = styled("div", {
   flex: 1,
   paddingRight: "4px",
-});
-
-const SectionTitle = styled("h3", {
-  color: "$textPrimary",
-  fontWeight: "700",
-  fontSize: "16px",
-  textAlign: "left",
-  margin: "0",
 });
 
 const CopyExplanation = styled("p", {
