@@ -1,8 +1,11 @@
 import React from "react";
 
+import { SpotifyMusic } from "../common/spotifyMusic/type";
 import { styled } from "../stitches.config";
 
-export const CurrentSpotifyMusic: React.FC = () => {
+export const CurrentSpotifyMusic: React.FC<{ spotifyMusic: SpotifyMusic }> = ({ spotifyMusic }) => {
+  const urlKey = spotifyMusic.uri.split("/")[2];
+  const embedUrl = `https://open.spotify.com/embed/track/${urlKey}?utm_source=generator`;
   return (
     <Base>
       <iframe

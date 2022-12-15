@@ -28,7 +28,7 @@ export const ContentSetting: React.FC<Props> = (props) => {
         <ProjectHeading3 link={{ href: `/projects/${project_id}/spotify_music`, text: "変更する" }}>
           思い出の音楽
         </ProjectHeading3>
-        <CurrentSpotifyMusic />
+        <CurrentSpotifyMusic spotifyMusic={props.project.spotify_music} />
       </Section>
 
       <Section>
