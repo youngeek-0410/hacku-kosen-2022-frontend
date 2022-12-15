@@ -48,8 +48,16 @@ export const backendApiHandlers = [
         },
       },
       text_messages: {
-        count: textMessageLimit,
+        count: textMessageLimit || 3,
         items: [
+          {
+            text: "おっつー",
+            sender_name: "山田 圭祐",
+          },
+          {
+            text: "おっつー",
+            sender_name: "山田 圭祐",
+          },
           {
             text: "おっつー",
             sender_name: "山田 圭祐",
@@ -57,10 +65,18 @@ export const backendApiHandlers = [
         ],
       },
       image_messages: {
-        count: imageMessageLimit,
+        count: imageMessageLimit || 3,
         items: [
           {
-            url: "https://",
+            url: "https://via.placeholder.com/150",
+            sender_name: "山田 圭祐",
+          },
+          {
+            url: "https://via.placeholder.com/150",
+            sender_name: "山田 圭祐",
+          },
+          {
+            url: "https://via.placeholder.com/150",
             sender_name: "山田 圭祐",
           },
         ],
@@ -70,8 +86,16 @@ export const backendApiHandlers = [
   }),
   rest.get(`${backendApiUrl}/api/projects/:project_id/text_messages/`, (req, res, ctx) => {
     const resBody = {
-      count: 10,
+      count: 5,
       items: [
+        {
+          text: "お疲れ",
+          sender_name: "山田 圭祐",
+        },
+        {
+          text: "お疲れ",
+          sender_name: "山田 圭祐",
+        },
         {
           text: "お疲れ",
           sender_name: "山田 圭祐",
@@ -90,8 +114,12 @@ export const backendApiHandlers = [
   }),
   rest.get(`${backendApiUrl}/api/projects/:project_id/image_messages/`, (req, res, ctx) => {
     const resBody = {
-      count: 10,
+      count: 5,
       items: [
+        {
+          url: "https://via.placeholder.com/150",
+          sender_name: "山田 圭祐",
+        },
         {
           url: "https://via.placeholder.com/150",
           sender_name: "山田 圭祐",
