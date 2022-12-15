@@ -2,7 +2,7 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
-import { Message, SenderName, TextMessageUnit } from "./textMessages/TextMessagesPage";
+import { TextMessageItem } from "./common/TextMessageItem";
 import { TextMessage } from "./type";
 
 type Props = {
@@ -16,12 +16,7 @@ export const SomeTextMessages: React.FC<Props> = (props) => {
   return (
     <Base>
       {props.textMessageData.items.map((messageData, i) => {
-        return (
-          <TextMessageUnit key={i}>
-            <Message>{messageData.text}</Message>
-            <SenderName>{messageData.sender_name}</SenderName>
-          </TextMessageUnit>
-        );
+        return <TextMessageItem key={i} messageData={messageData} />;
       })}
     </Base>
   );

@@ -4,6 +4,7 @@ import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
 import { styled } from "../../stitches.config";
+import { TextMessageItem } from "../common/TextMessageItem";
 import { TextMessage } from "../type";
 
 type Props = {
@@ -31,12 +32,7 @@ export const TextMessagesPage: React.FC<Props> = (props) => {
       </Headline>
       <TextMessageContainer>
         {props.items.map((textMessageData, i) => {
-          return (
-            <TextMessageUnit key={i}>
-              <Message>{textMessageData.text}</Message>
-              <SenderName>{textMessageData.sender_name}</SenderName>
-            </TextMessageUnit>
-          );
+          return <TextMessageItem key={i} messageData={textMessageData} />;
         })}
       </TextMessageContainer>
     </Container>
