@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../stitches.config";
-import { backendApiUrl } from "../../api";
+import { backendApiUrl, getBackendApiKey } from "../../api";
 
 type CreateProjectRequest = {
   receiver_name: string;
@@ -18,8 +18,9 @@ const createProject = async (receiverName: string): Promise<string> => {
     url: `${backendApiUrl}/api/projects/`,
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Accept: "application/json",
+      "content-type": "application/json",
+      "x-api-key": getBackendApiKey(),
     },
     data: {
       receiver_name: receiverName,
@@ -105,9 +106,9 @@ const InputName = styled("input", {
   },
 });
 
-const InputNameWrapper = styled("div", {
-  marginTop: "16px",
-});
+// const InputNameWrapper = styled("div", {
+//   marginTop: "16px",
+// });
 
 const NewProjectButton = styled("button", {
   color: "#FFFFFF",

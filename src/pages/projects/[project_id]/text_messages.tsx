@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { GetServerSideProps, NextPage } from "next";
 
-import { backendApiUrl } from "../../../../api";
+import { backendApiUrl, getBackendApiKey } from "../../../../api";
 import { TextMessagesPage } from "../../../projects/TextMessagesPage";
 import { TextMessage } from "../../../projects/type";
 
@@ -51,8 +51,12 @@ const getTextMessages = async (project_id: string): Promise<GetTextMessagesRespo
     url: `${backendApiUrl}/api/projects/${project_id}/text_messages/`,
     method: "GET",
     params,
+    headers: {
+      Accept: "application/json",
+      "content-type": "application/json",
+      "x-api-key": getBackendApiKey(),
+    },
   };
-
   const { data, status } = await axios.request<GetTextMessagesResponse>(requestConfig);
   if (status !== 200) throw new Error("failed to get messages");
   return data;

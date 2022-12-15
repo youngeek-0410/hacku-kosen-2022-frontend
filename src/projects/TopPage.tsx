@@ -11,7 +11,7 @@ export const TopPage: React.FC = () => {
   return (
     <>
       {/* <Header></Header> */}
-      <CenteringWrapper>
+      <Container>
         <Box></Box>
         <Catchphrase>
           感謝の言葉。
@@ -28,7 +28,9 @@ export const TopPage: React.FC = () => {
           <br />
           デジタルにしかできない表現を。
         </Catchphrase>
-        <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+        <ButtonWrapper>
+          <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+        </ButtonWrapper>
         <Section>
           <SectionTitle>Cloveeeeとは?</SectionTitle>
           <SectionText>
@@ -37,7 +39,7 @@ export const TopPage: React.FC = () => {
             aaaaa
           </SectionText>
         </Section>
-      </CenteringWrapper>
+      </Container>
     </>
   );
 };
@@ -67,12 +69,14 @@ const Catchphrase = styled("p", {
   color: "$textPrimary",
 });
 
-export const CenteringWrapper = styled("div", {
-  textAlign: "center",
+const Container = styled("div", {
   width: "80%",
   margin: "0 auto",
 });
 
+const ButtonWrapper = styled("div", {
+  textAlign: "center",
+});
 const NewProjectButton = styled("button", {
   color: "#FFFFFF",
   background: "$yellow900",
