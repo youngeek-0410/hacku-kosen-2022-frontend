@@ -16,7 +16,7 @@ export const TextMessagesPage: React.FC<Props> = (props) => {
   const router = useRouter();
   const { project_id } = router.query;
   return (
-    <>
+    <Container>
       <Headline>
         <BackButton
           href={{
@@ -34,18 +34,23 @@ export const TextMessagesPage: React.FC<Props> = (props) => {
         {props.items.map((textMessageData, i) => {
           return (
             <TextMessageUnit key={i}>
-              <Text>{textMessageData.text}</Text>
+              <Message>{textMessageData.text}</Message>
               <SenderName>{textMessageData.sender_name}</SenderName>
             </TextMessageUnit>
           );
         })}
       </TextMessageContainer>
-    </>
+    </Container>
   );
 };
 
-const Headline = styled("div", {
+const Container = styled("div", {
   width: "80%",
+  margin: "0 auto",
+});
+
+const Headline = styled("div", {
+  width: "100%",
   margin: "0 auto",
   display: "flex",
   justifyContent: "left",
@@ -67,19 +72,19 @@ const BackButton = styled(Link, {
   width: "30px",
 });
 
-const TextMessageContainer = styled("div", {
-  width: "80%",
+export const TextMessageContainer = styled("div", {
+  width: "100%",
   margin: "0 auto",
 });
 
-const TextMessageUnit = styled("div", {
+export const TextMessageUnit = styled("div", {
   width: "100%",
   background: "$messegeBackground",
   margin: "0 auto 8px",
   textAlign: "center",
 });
 
-const Text = styled("p", {
+export const Message = styled("p", {
   fontSize: "12px",
   color: "$textSecondary",
   padding: "8px",
@@ -87,7 +92,7 @@ const Text = styled("p", {
   textAlign: "left",
 });
 
-const SenderName = styled("p", {
+export const SenderName = styled("p", {
   fontSize: "12px",
   color: "$textSecondary",
   textAlign: "right",
