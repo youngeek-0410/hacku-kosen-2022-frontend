@@ -68,7 +68,7 @@ export const NewProjectPage: React.FC = () => {
 const Base = styled("div", {
   position: "relative",
   width: "80%",
-  minHeight: "100svh",
+  minHeight: "100vh",
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",
