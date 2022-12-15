@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
@@ -36,7 +36,7 @@ export const ImageMessagesPage: React.FC<Props> = (props) => {
           return (
             // eslint-disable-next-line react/jsx-key
             <ImageContainer>
-              <Image key={i} src={imageMessageData.url} layout={"fill"} objectFit={"cover"} alt="picture sent" />
+              <Image key={i} src={imageMessageData.url} fill object-fit={"cover"} alt="picture sent" />
             </ImageContainer>
           );
         })}
