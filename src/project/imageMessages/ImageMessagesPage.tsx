@@ -2,9 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { styled } from "../stitches.config";
-
-import { ImageMessage } from "./type";
+import { styled } from "../../stitches.config";
+import { ImageMessage } from "../type";
 
 type Props = {
   count: number;

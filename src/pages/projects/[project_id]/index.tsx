@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from "next";
 
 import { authenticate } from "../../../common/spotifyMusic/utils/authenticate";
-import { ProjectDetailPage } from "../../../projects/detail/ProjectDetailPage";
+import { ProjectDetailPage } from "../../../project/ProjectDetailPage";
 import { GeneralPageProps } from "../../_app";
-import { Project } from "../../../projects/type";
+import { Project } from "../../../project/type";
 import { getProject } from "../../../utils/apis";
 
 type Props = {

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-import { ImageMessage, Project, TextMessage } from "../projects/type";
+import { ImageMessage, Project, TextMessage } from "../project/type";
 
 export const backendApiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
 
