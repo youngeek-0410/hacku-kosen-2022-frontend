@@ -1,6 +1,8 @@
 import React from "react";
 
-import { Message, SenderName, TextMessageContainer, TextMessageUnit } from "./textMessages/TextMessagesPage";
+import { styled } from "../stitches.config";
+
+import { Message, SenderName, TextMessageUnit } from "./textMessages/TextMessagesPage";
 import { TextMessage } from "./type";
 
 type Props = {
@@ -12,7 +14,7 @@ type Props = {
 
 export const SomeTextMessages: React.FC<Props> = (props) => {
   return (
-    <TextMessageContainer>
+    <Base>
       {props.textMessageData.items.map((messageData, i) => {
         return (
           <TextMessageUnit key={i}>
@@ -21,6 +23,10 @@ export const SomeTextMessages: React.FC<Props> = (props) => {
           </TextMessageUnit>
         );
       })}
-    </TextMessageContainer>
+    </Base>
   );
 };
+
+const Base = styled("div", {
+  marginTop: "8px",
+});

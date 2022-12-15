@@ -25,12 +25,14 @@ export const ContentSetting: React.FC<Props> = (props) => {
       </SectionTitle>
 
       <Section>
-        <ProjectHeading3>思い出の音楽</ProjectHeading3>
+        <ProjectHeading3 link={{ href: `/projects/${project_id}/spotify_music`, text: "変更する" }}>
+          思い出の音楽
+        </ProjectHeading3>
         <CurrentMusic />
       </Section>
 
       <Section>
-        <ProjectHeading3 viewAllLink={`/projects/${project_id}/text_messages`}>
+        <ProjectHeading3 link={{ href: `/projects/${project_id}/text_messages`, text: "すべて見る" }}>
           {props.project.text_messages.count}件のメッセージ
         </ProjectHeading3>
 
@@ -38,7 +40,7 @@ export const ContentSetting: React.FC<Props> = (props) => {
       </Section>
 
       <Section>
-        <ProjectHeading3 viewAllLink={`/projects/${project_id}/image_messages`}>
+        <ProjectHeading3 link={{ href: `/projects/${project_id}/image_messages`, text: "すべて見る" }}>
           {props.project.image_messages.count}件の写真
         </ProjectHeading3>
 

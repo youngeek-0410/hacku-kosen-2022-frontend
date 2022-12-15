@@ -17,7 +17,7 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
       <ReceiverName>
         {props.project.receiver_name}さんへの
         <br />
-        サプライズ
+        サプライズ計画
       </ReceiverName>
 
       <hr />
@@ -37,7 +37,7 @@ const Container = styled("div", {
 });
 
 const ReceiverName = styled("h2", {
-  fontSize: "32px",
+  fontSize: "36px",
   fontWeight: "400",
   textAlign: "left",
   marginBottom: "16px",
