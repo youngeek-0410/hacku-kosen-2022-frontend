@@ -33,7 +33,7 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
 };
 
 const Container = styled("div", {
-  width: "80%",
+  width: "85%",
   textAlign: "center",
   margin: "0 auto 120px",
   position: "relative",
