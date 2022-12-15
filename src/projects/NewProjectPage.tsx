@@ -1,35 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../stitches.config";
-import { backendApiUrl, getBackendApiKey } from "../../api";
-
-type CreateProjectRequest = {
-  receiver_name: string;
-};
-
-type CreateProjectResponse = {
-  project_id: string;
-};
-
-const createProject = async (receiverName: string): Promise<string> => {
-  const requestConfig: AxiosRequestConfig<CreateProjectRequest> = {
-    url: `${backendApiUrl}/api/projects/`,
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "content-type": "application/json",
-      "x-api-key": getBackendApiKey(),
-    },
-    data: {
-      receiver_name: receiverName,
-    },
-  };
-  const { data, status } = await axios.request<CreateProjectResponse>(requestConfig);
-  if (status !== 200) throw new Error("failed to create project");
-  return data.project_id;
-};
+import { createProject } from "../utils/apis";
 
 const receiverNamePlaceholder = "山田 太郎";
 
@@ -47,7 +20,6 @@ export const NewProjectPage: React.FC = () => {
 
   return (
     <>
-      {/* <Header></Header> */}
       <Base>
         <div>
           <PageTitle>色紙を作成する</PageTitle>
