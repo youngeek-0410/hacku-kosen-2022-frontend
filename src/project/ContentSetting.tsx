@@ -6,7 +6,7 @@ import { styled } from "../stitches.config";
 import { ProjectHeading2 } from "./common/ProjectHeading2";
 import { ProjectHeading3 } from "./common/ProjectHeading3";
 import { ProjectParagraph } from "./common/ProjectParagraph";
-import { CurrentMusic } from "./CurrentMusic";
+import { CurrentSpotifyMusic } from "./CurrentSpotifyMusic";
 import { SomeImageMessages } from "./SomeImageMessage";
 import { SomeTextMessages } from "./SomeTextMessages";
 import { Project } from "./type";
@@ -28,7 +28,7 @@ export const ContentSetting: React.FC<Props> = (props) => {
         <ProjectHeading3 link={{ href: `/projects/${project_id}/spotify_music`, text: "変更する" }}>
           思い出の音楽
         </ProjectHeading3>
-        <CurrentMusic />
+        <CurrentSpotifyMusic />
       </Section>
 
       <Section>

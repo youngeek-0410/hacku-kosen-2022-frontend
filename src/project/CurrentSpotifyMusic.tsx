@@ -2,7 +2,7 @@ import React from "react";
 
 import { styled } from "../stitches.config";
 
-export const CurrentMusic: React.FC = () => {
+export const CurrentSpotifyMusic: React.FC = () => {
   return (
     <Base>
       <iframe
