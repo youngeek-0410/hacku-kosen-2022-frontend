@@ -3,9 +3,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
-import { styled } from "../stitches.config";
-
-import { TextMessage } from "./type";
+import { styled } from "../../stitches.config";
+import { TextMessage } from "../type";
 
 type Props = {
   count: number;

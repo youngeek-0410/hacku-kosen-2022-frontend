@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-import { styled } from "../stitches.config";
+import { styled } from "./stitches.config";
 
 export const TopPage: React.FC = () => {
   const router = useRouter();

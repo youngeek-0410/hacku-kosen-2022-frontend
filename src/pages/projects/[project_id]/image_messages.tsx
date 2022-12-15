@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from "next";
 
 import { getImageMessages } from "../../../utils/apis";
-import { ImageMessagesPage } from "../../../projects/ImageMessagesPage";
-import { ImageMessage } from "../../../projects/type";
+import { ImageMessagesPage } from "../../../project/imageMessages/ImageMessagesPage";
+import { ImageMessage } from "../../../project/type";
 
 type Props = {
   count: number;

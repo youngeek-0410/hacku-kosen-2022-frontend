@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import { TopPage } from "../projects/TopPage";
+import { TopPage } from "../TopPage";
 
 // TODO: TopPageを実装する
 const Page: NextPage<{}> = (props) => {
