@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { GetServerSideProps, NextPage } from "next";
 
-import { backendApiUrl } from "../../../../api";
+import { backendApiUrl, getBackendApiKey } from "../../../../api";
 import { ImageMessagesPage } from "../../../projects/ImageMessagesPage";
 import { ImageMessage } from "../../../projects/type";
 
@@ -51,6 +51,11 @@ const getImageMessages = async (project_id: string): Promise<GetImageMessagesRes
     url: `${backendApiUrl}/api/projects/${project_id}/image_messages/`,
     method: "GET",
     params,
+    headers: {
+      Accept: "application/json",
+      "content-type": "application/json",
+      "x-api-key": getBackendApiKey(),
+    },
   };
 
   const { data, status } = await axios.request<GetImageMessagesResponse>(requestConfig);

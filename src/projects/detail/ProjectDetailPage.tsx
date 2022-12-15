@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { styled } from "../../stitches.config";
-import { backendApiUrl } from "../../../api";
+import { backendApiUrl, getBackendApiKey } from "../../../api";
 import { Project } from "../type";
 // import { SpotifyMusicSelect } from "../../common/spotifyMusic/components/SpotifyMusicSelect";
 
@@ -35,6 +35,11 @@ export const getProjectData = async (project_id: string): Promise<GetProjectData
     method: "GET",
     params: {
       params,
+    },
+    headers: {
+      Accept: "application/json",
+      "content-type": "application/json",
+      "x-api-key": getBackendApiKey(),
     },
   };
 
