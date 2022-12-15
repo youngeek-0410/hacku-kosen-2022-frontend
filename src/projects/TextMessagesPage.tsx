@@ -97,4 +97,5 @@ export const SenderName = styled("p", {
   color: "$textSecondary",
   textAlign: "right",
   padding: "0 8px 8px",
+  margin: "0",
 });
