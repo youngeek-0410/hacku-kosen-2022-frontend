@@ -28,7 +28,9 @@ export const TopPage: React.FC = () => {
           <br />
           デジタルにしかできない表現を。
         </Catchphrase>
-        <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+        <ButtonWrapper>
+          <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+        </ButtonWrapper>
         <Section>
           <SectionTitle>Cloveeeeとは?</SectionTitle>
           <SectionText>
@@ -72,6 +74,9 @@ const Container = styled("div", {
   margin: "0 auto",
 });
 
+const ButtonWrapper = styled("div", {
+  textAlign: "center",
+});
 const NewProjectButton = styled("button", {
   color: "#FFFFFF",
   background: "$yellow900",
