@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 
 import { MusicPlayer, musicPlayerFactory } from "../utils/musicPlayer";
 import { SpotifyMusic } from "../type";
-import { useSearchSpotifyMusic } from "../hooks/useSearchSpotifyMusic";
+import { useSearchSpotifyTrack } from "../hooks/useSearchSpotifyTrack";
 
 export const SpotifyMusicSearch: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentSpotifyMusic, setCurrentSpotifyMusic] = useState<SpotifyMusic | null>(null);
-  const searchResults = useSearchSpotifyMusic(searchQuery);
+  const searchResults = useSearchSpotifyTrack(searchQuery);
   const musicPlayer = musicPlayerFactory(currentSpotifyMusic);
 
   useEffect(() => {
