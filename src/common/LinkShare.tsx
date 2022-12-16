@@ -1,16 +1,18 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { FiShare, FiClipboard } from "react-icons/fi";
 
 import { styled } from "../stitches.config";
 
 export const LinkShare: React.FC = () => {
-  const url = location.href;
+  const router = useRouter();
+  const hostName = "https://hacku-kosen-2022-frontend.vercel.app";
+  const url = `${hostName}${router.asPath}`;
   const copyLink = () => {
     navigator.clipboard.writeText(url);
-    console.log("copy");
   };
   const shareLink = () => {
-    const data = {
+    const data: ShareData = {
       url: url,
     };
     navigator.share(data);

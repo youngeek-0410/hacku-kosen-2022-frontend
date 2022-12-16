@@ -1,5 +1,6 @@
 import React from "react";
 
+import { LinkShare } from "../common/LinkShare";
 import { styled } from "../stitches.config";
 
 import { ProjectHeading2 } from "./common/ProjectHeading2";
@@ -18,7 +19,7 @@ export const ProjectSetting: React.FC = () => {
         <ProjectHeading3>寄書き用リンクをコピー</ProjectHeading3>
         <ProjectParagraph>寄書きを投稿してもらうには右のボタンからURLをコピーして共有してください</ProjectParagraph>
         {/* TODO: いい感じコピーできるコンポーネントを用意する */}
-        {/*  <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>*/}
+        <LinkShare />
       </Section>
 
       <Section>
@@ -46,3 +47,4 @@ const Section = styled("div", {
 const SectionTitle = styled("div", {
   margin: "24px 0 36px",
 });
+const LinkCopyButton = styled("button", {});
