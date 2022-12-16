@@ -1,21 +1,15 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiShare, FiClipboard } from "react-icons/fi";
 
 import { styled } from "../stitches.config";
 
 export const LinkShare: React.FC = () => {
   const router = useRouter();
+
+  const [canShare, setCanShare] = useState(true);
   const hostName = "https://hacku-kosen-2022-frontend.vercel.app";
   const url = `${hostName}${router.asPath}`;
-
-  const share = () => {
-    if (typeof navigator.share === "undefined") {
-      return copyLink();
-    } else {
-      return shareLink();
-    }
-  };
   const copyLink = () => {
     navigator.clipboard.writeText(url);
   };
@@ -25,14 +19,25 @@ export const LinkShare: React.FC = () => {
     };
     navigator.share(data);
   };
+
+  useEffect(() => {
+    // NOTE: mac chrome で share がかけないらしいがぱっと対応コードが書けなかったのであと回し
+    // setCanShare(Object.hasOwn(navigator, "share"));
+  }, []);
+
   return (
     <Base>
-      <CopyClipboard onClick={share}>
-        <FiClipboard />
-      </CopyClipboard>
-      <ShareButton onClick={share}>
-        <FiShare />
-      </ShareButton>
+      {canShare ? (
+        <ShareButton onClick={shareLink}>
+          <FiShare />
+        </ShareButton>
+      ) : (
+        <CopyClipboard onClick={copyLink}>
+          <FiClipboard />
+        </CopyClipboard>
+      )}
+
+      {/* 実際にサイトに飛べるアイコンリンク */}
     </Base>
   );
 };
