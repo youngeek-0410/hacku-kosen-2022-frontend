@@ -26,6 +26,12 @@ export const backendApiHandlers = [
   rest.post(`${backendApiUrl}/api/projects/:project_id/spotify_music/`, async (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+  rest.put(`${backendApiUrl}/api/projects/:project_id/top_text/`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+  rest.put(`${backendApiUrl}/api/projects/:project_id/top_image/`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
   rest.get(`${backendApiUrl}/api/projects/:project_id/`, async (req, res, ctx) => {
     const textMessageLimit = req.url.searchParams.get("text_message_limit");
     const imageMessageLimit = req.url.searchParams.get("image_message_limit");
@@ -34,6 +40,10 @@ export const backendApiHandlers = [
     const resBody = {
       project_id: "a38ioje",
       receiver_name: "山田 太郎",
+      top_text: "こうよう祭おつかれ様でした！",
+      top_image: {
+        url: "https://via.placeholder.com/150",
+      },
       spotify_music: exampleSpotifyMusic,
       text_messages: {
         count: textMessageLimit || 3,
