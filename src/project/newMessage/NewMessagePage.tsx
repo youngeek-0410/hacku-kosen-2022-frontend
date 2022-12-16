@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import { styled } from "../../stitches.config";
+import { Headline } from "../common/Headline";
+import { Project } from "../type";
 
 import { ImageMessageEdit } from "./ImageMessageEdit";
 import { SenderNameEdit } from "./SenderNameEdit";
@@ -12,7 +14,10 @@ const callMessageApi = (textMessage: string, senderName: string, imageMessage?: 
   return alert(`text: ${textMessage} sender: ${senderName} image: ${imageMessage}`);
 };
 
-export const NewMessagePage: React.FC = () => {
+type Props = {
+  project: Project;
+};
+export const NewMessagePage: React.FC<Props> = ({ project }) => {
   const router = useRouter();
   const { project_id } = router.query;
 
@@ -30,14 +35,8 @@ export const NewMessagePage: React.FC = () => {
 
   return (
     <>
-      <BackButton
-        href={{
-          pathname: "/projects/[project_id]",
-          query: { project_id: project_id },
-        }}
-      >
-        もどる
-      </BackButton>
+      <Headline title={`${project.receiver_name}さんへの式紙`} />
+
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageMessageEdit />
       <SenderNameEdit senderName={senderName} onChange={setSenderName} />

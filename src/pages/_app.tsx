@@ -5,6 +5,7 @@ import { NextPage } from "next";
 import { SpotifyApiAccessToken } from "../common/spotifyMusic/type";
 import { SpotifyApiAccessTokenProvider } from "../common/spotifyMusic/contexts/SpotifyApiAuthProvider";
 import { setupMockServer, setupMockWorker } from "../mocks/mock";
+import { styled } from "../stitches.config";
 
 export type GeneralPageProps = { spotifyApiAccessToken?: SpotifyApiAccessToken };
 export type NextLayout = (page: ReactElement) => ReactNode;
@@ -31,9 +32,16 @@ const App = ({ Component, pageProps }: AppPropsWithLayout<GeneralPageProps>) => 
 
   return getLayout(
     <SpotifyApiAccessTokenProvider accessToken={pageProps.spotifyApiAccessToken || ""}>
-      <Component {...pageProps} />
+      <StyledContainer>
+        <Component {...pageProps} />
+      </StyledContainer>
     </SpotifyApiAccessTokenProvider>
   );
 };
 
 export default App;
+
+const StyledContainer = styled("div", {
+  width: "85%",
+  margin: "0 auto",
+});

@@ -12,21 +12,16 @@ type Props = {
 
 export const TextMessagesPage: React.FC<Props> = (props) => {
   return (
-    <Container>
+    <>
       <Headline title={`${props.count}件のメッセージ`} />
       <div>
         {props.items.map((textMessageData, i) => {
           return <TextMessageItem key={i} messageData={textMessageData} />;
         })}
       </div>
-    </Container>
+    </>
   );
 };
-
-const Container = styled("div", {
-  width: "80%",
-  margin: "0 auto",
-});
 
 export const TextMessageUnit = styled("div", {
   background: "$messegeBackground",
