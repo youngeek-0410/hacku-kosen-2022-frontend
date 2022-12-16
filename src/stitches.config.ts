@@ -19,6 +19,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       yellow700: "#C8A538",
       yellow800: "#B28F34",
       yellow900: "#8E6C2C",
+      "yellow900-reaction": "#654D1F",
 
       blue50: "#E5F3FB",
       blue100: "#C1E0F6",
