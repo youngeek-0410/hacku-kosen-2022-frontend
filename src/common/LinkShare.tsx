@@ -8,6 +8,14 @@ export const LinkShare: React.FC = () => {
   const router = useRouter();
   const hostName = "https://hacku-kosen-2022-frontend.vercel.app";
   const url = `${hostName}${router.asPath}`;
+
+  const share = () => {
+    if (typeof navigator.share === "undefined") {
+      return copyLink();
+    } else {
+      return shareLink();
+    }
+  };
   const copyLink = () => {
     navigator.clipboard.writeText(url);
   };
@@ -17,20 +25,35 @@ export const LinkShare: React.FC = () => {
     };
     navigator.share(data);
   };
-
   return (
-    <>
-      <span>{url}</span>
-      <ShareButton onClick={shareLink}>
-        <FiShare />
-      </ShareButton>
-      <CopyClipboard onClick={copyLink}>
+    <Base>
+      <CopyClipboard onClick={share}>
         <FiClipboard />
       </CopyClipboard>
-    </>
+      <ShareButton onClick={share}>
+        <FiShare />
+      </ShareButton>
+    </Base>
   );
 };
 
-const CopyClipboard = styled("button", {});
+const Base = styled("div", {
+  display: "flex",
+  justifyContent: "flex-end",
+});
 
-const ShareButton = styled("button", {});
+const CopyClipboard = styled("button", {
+  border: "none",
+  margin: "8px 16px 0 0",
+  padding: "0",
+  fontSize: "24px",
+  background: "inherit",
+});
+
+const ShareButton = styled("button", {
+  border: "none",
+  margin: "8px 16px 0 0",
+  padding: "0",
+  fontSize: "24px",
+  background: "inherit",
+});
