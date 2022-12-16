@@ -134,7 +134,7 @@ export const registerProjectSpotifyMusic = async (projectId: string, uri: string
     uri,
   };
 
-  const { status } = await backendApiClient.post(`/api/projects/${projectId}/spotify_music/`, body);
+  const { status } = await backendApiClient.put(`/api/projects/${projectId}/spotify_music/`, body);
   if (status !== 200) throw new Error("failed to register spotify music");
 
   return;
