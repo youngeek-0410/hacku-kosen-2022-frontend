@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
+import { Base64 } from "../common/imageEncoder";
 import { ImageMessage, Project, TextMessage } from "../project/type";
 
 export const backendApiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
@@ -97,4 +98,28 @@ export const createProject = async (receiverName: string): Promise<string> => {
   const { data, status } = await backendApiClient.post<CreateProjectResponse>("/api/projects/", body);
   if (status !== 200) throw new Error("failed to create project");
   return data.project_id;
+};
+
+type CreateProjectMessageRequest = {
+  text: string;
+  images: Base64;
+  sender_name: string;
+};
+
+export const createMessage = async (
+  projectId: string,
+  text: string,
+  imageData: Base64,
+  senderName: string
+): Promise<void> => {
+  const body: CreateProjectMessageRequest = {
+    text,
+    images: imageData,
+    sender_name: senderName,
+  };
+
+  const { status } = await backendApiClient.post(`/api/projects/${projectId}/message/`, body);
+  if (status !== 200) throw new Error("failed to create message");
+
+  return;
 };

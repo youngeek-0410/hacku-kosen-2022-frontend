@@ -2,7 +2,7 @@ import JSZip from "jszip";
 
 import { Image } from "./ImageSelector";
 
-type Base64 = string;
+export type Base64 = string;
 
 export const toZipAndBase64 = async (images: Image[]): Promise<Base64> => {
   const zip = new JSZip();

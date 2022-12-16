@@ -4,19 +4,15 @@ import React, { useState } from "react";
 import { toZipAndBase64 } from "../../common/imageEncoder";
 import { ImageSelector, useImageSelector } from "../../common/ImageSelector";
 import { styled } from "../../stitches.config";
+import { createMessage } from "../../utils/apis";
 import { Headline } from "../common/Headline";
 import { Project } from "../type";
-
-import { SenderNameEdit } from "./SenderNameEdit";
-import { TextMessageEdit } from "./TextMessageEdit";
-
-const callMessageApi = (textMessage: string, senderName: string, imageMessage?: string) => {
-  return alert(`text: ${textMessage} sender: ${senderName} image: ${imageMessage}`);
-};
 
 type Props = {
   project: Project;
 };
+
+const senderNamePlaceholder = "山田 花子";
 export const NewMessagePage: React.FC<Props> = ({ project }) => {
   const router = useRouter();
   const { project_id } = router.query;
@@ -26,35 +22,52 @@ export const NewMessagePage: React.FC<Props> = ({ project }) => {
 
   const canSendMessage = textMessage !== "" && senderName !== "";
 
-  const onClickSendMessage = async () => {
-    // if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
+  const onClickSendButton = async () => {
+    if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
 
     const imagesData = await toZipAndBase64(images);
-    // callMessageApi(textMessage, senderName);
+    await createMessage(project_id as string, textMessage, imagesData, senderName);
 
-    // router.push(`/projects/${project_id}`);
+    router.push(`/projects/${project_id}`);
   };
 
   const [images, onFileChange, onFileDelete] = useImageSelector();
 
   return (
     <>
-      <Headline title={`${project.receiver_name}さんへのメッセージ`} />
-
-      <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
-      <ImageSelector images={images} choseLimit={6} onFileChange={onFileChange} onFileDelete={onFileDelete} />
-      <SenderNameEdit senderName={senderName} onChange={setSenderName} />
-
-      <SendMessageButton onClick={onClickSendMessage} disabled={!canSendMessage}>
+      <Headline title={`${project.receiver_name}さんへの\nメッセージ`} />
+      <Section>
+        <label>送るメッセージを入力してください</label>
+        <textarea rows={9} value={textMessage} onChange={(e) => setTextMessage(e.target.value)} />
+      </Section>
+      <Section>
+        <label>送るメッセージを入力してください</label>
+        <ImageSelector images={images} choseLimit={6} onFileChange={onFileChange} onFileDelete={onFileDelete} />
+      </Section>
+      <Section>
+        <label>あなたのお名前をどうぞ</label>
+        <input value={senderName} placeholder={senderNamePlaceholder} onChange={(e) => setSenderName(e.target.value)} />
+      </Section>
+      <SendButton onClick={onClickSendButton} disabled={!canSendMessage}>
         思いをとどける
-      </SendMessageButton>
+      </SendButton>
     </>
   );
 };
 
-export const SectionTitle = styled("p", {});
+const Section = styled("div", {
+  marginTop: "32px",
+  "& > input, textarea": {
+    display: "block",
+    width: "100%",
+  },
+  "& > label": {
+    display: "block",
+    marginBottom: "8px",
+  },
+});
 
-const SendMessageButton = styled("button", {
+const SendButton = styled("button", {
   display: "block",
   margin: "0 auto",
 });

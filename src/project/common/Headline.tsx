@@ -23,4 +23,5 @@ const Title = styled("p", {
   fontSize: "28px",
   fontWeight: "300",
   color: "$textPrimary",
+  whiteSpace: "pre-wrap",
 });
