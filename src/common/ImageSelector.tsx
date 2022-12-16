@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 RxCross2;
 import { RxCross2 } from "react-icons/rx";
@@ -61,6 +61,18 @@ export const ImageSelector: React.FC<Props> = (props) => {
       ))}
     </Base>
   );
+};
+
+export const useImageSelector = () => {
+  const [images, setImages] = useState<Image[]>([]);
+  const onFileChange = (newImages: Image[]) => {
+    setImages([...images, ...newImages]);
+  };
+  const onFileDelete = (key: string) => {
+    setImages(images.filter((image) => image.key !== key));
+  };
+
+  return [images, onFileChange, onFileDelete] as const;
 };
 
 const Base = styled("div", {
