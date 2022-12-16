@@ -95,4 +95,7 @@ const NewProjectButton = styled("button", {
   position: "absolute",
   bottom: 0,
   left: 0,
+  "&:active": {
+    background: "$yellow900-reaction",
+  },
 });
