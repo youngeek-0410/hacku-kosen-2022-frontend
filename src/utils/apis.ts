@@ -4,6 +4,7 @@ import { Base64 } from "../common/imageEncoder";
 import { ImageMessage, Project, TextMessage } from "../project/type";
 
 export const backendApiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
+export const searchSpotifyMusicApiUrl = "https://api.spotify.com/v1/search";
 
 const backendApiClient = axios.create({
   baseURL: backendApiUrl,
@@ -120,6 +121,21 @@ export const createMessage = async (
 
   const { status } = await backendApiClient.post(`/api/projects/${projectId}/message/`, body);
   if (status !== 200) throw new Error("failed to create message");
+
+  return;
+};
+
+type RegisterProjectSpotifyMusicRequest = {
+  uri: string;
+};
+
+export const registerProjectSpotifyMusic = async (projectId: string, uri: string): Promise<void> => {
+  const body: RegisterProjectSpotifyMusicRequest = {
+    uri,
+  };
+
+  const { status } = await backendApiClient.put(`/api/projects/${projectId}/spotify_music/`, body);
+  if (status !== 200) throw new Error("failed to register spotify music");
 
   return;
 };

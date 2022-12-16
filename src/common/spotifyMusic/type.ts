@@ -1,16 +1,20 @@
 export type SpotifyMusic = {
   uri: string; // Spotifyサービス上での楽曲識別子
-  name: string; // 楽曲名
-  external_url: string; // 楽曲のSpotifyページのURL
-  preview_url: string; // 30sのサンプル再生のURL
+};
+
+export type Track = {
   album: {
-    name: string; // アルバム名
-    image_url: string; // アルバムのカバー画像のURL
+    name: string;
+    artists: {
+      name: string;
+    }[];
+    images: {
+      url: string;
+    }[];
   };
-  artist: {
-    name: string; // アーティスト名
-    external_url: string; // アーティストのSpotifyページのURL
-  };
+  uri: string;
+  name: string;
+  preview_url: string;
 };
 
 export type SpotifyApiAccessToken = string;
