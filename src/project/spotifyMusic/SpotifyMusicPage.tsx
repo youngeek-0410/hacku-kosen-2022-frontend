@@ -43,7 +43,7 @@ export const SpotifyMusicPage: React.FC<{ spotifyMusic: SpotifyMusic }> = ({ spo
         <ProjectHeading3>検索</ProjectHeading3>
         <SearchQueryInput
           type="text"
-          placeholder="Vaundy, Hey! Say! Jump!, ..."
+          placeholder="artist name, music title..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -88,7 +88,7 @@ const SearchQueryInput = styled("input", {
   margin: "8px 0 20px",
   width: "100%",
   height: "40px",
-  padding: "0 16px",
+  paddingLeft: "4px",
   fontSize: "16px",
   border: "1px solid $gray300",
   borderRadius: "4px",
