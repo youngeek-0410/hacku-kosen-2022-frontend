@@ -7,28 +7,36 @@ import { createProject } from "../utils/apis";
 const receiverNamePlaceholder = "山田 太郎";
 
 export const NewProjectPage: React.FC = () => {
-  const [receiverName, setReceiverName] = useState("");
+  const [nameInputStatus, setNameInputStatus] = useState({ name: "", isTouched: false });
   const router = useRouter();
 
   const registerProject = async () => {
     if (!canRegister) return;
-    const project_id = await createProject(receiverName);
+    const project_id = await createProject(nameInputStatus.name);
     router.push(`/projects/${project_id}`);
   };
 
-  const canRegister = receiverName !== "";
+  const canRegister = nameInputStatus.name !== "";
 
+  // TODO: 文言が今のコンセプトにはあってないのでそのあたりを修正する
   return (
     <>
       <Base>
         <div>
           <PageTitle>色紙を作成する</PageTitle>
           <Discription>ここで入力されたお名前はページが公開されるときにも使用されます。</Discription>
+          <Label htmlFor="name">お名前</Label>
           <InputName
-            value={receiverName}
+            name="name"
+            value={nameInputStatus.name}
             placeholder={receiverNamePlaceholder}
-            onChange={(e) => setReceiverName(e.target.value)}
+            onChange={(e) => setNameInputStatus({ name: e.target.value, isTouched: true })}
           />
+          <InvalidMessageWrapper>
+            <InvalidMessage aria-live="polite" hidden={!(nameInputStatus.name === "" && nameInputStatus.isTouched)}>
+              1文字以上入力してください。
+            </InvalidMessage>
+          </InvalidMessageWrapper>
         </div>
         <NewProjectButton onClick={registerProject} disabled={!canRegister}>
           色紙を作成する
@@ -57,7 +65,12 @@ const PageTitle = styled("p", {
 const Discription = styled("p", {
   textAlign: "left",
   fontSize: "14px",
-  margin: "8px auto 0",
+  margin: "8px auto 16px",
+  color: "$textPrimary",
+});
+
+const Label = styled("label", {
+  fontSize: "12px",
   color: "$textPrimary",
 });
 
@@ -70,15 +83,18 @@ const InputName = styled("input", {
   borderRadius: "4px",
   boxSizing: "border-box",
   paddingLeft: "8px",
-  margin: "20px auto 0",
-  "&:focus-visible, &:focus": {
-    outline: "none",
-  },
 });
 
-// const InputNameWrapper = styled("div", {
-//   marginTop: "16px",
-// });
+const InvalidMessageWrapper = styled("div", {
+  height: "32px",
+  margin: "4px 0 0 0",
+});
+
+const InvalidMessage = styled("p", {
+  fontSize: "12px",
+  color: "$alert",
+  margin: "unset",
+});
 
 const NewProjectButton = styled("button", {
   color: "#FFFFFF",
@@ -97,5 +113,8 @@ const NewProjectButton = styled("button", {
   left: 0,
   "&:active": {
     background: "$yellow900-reaction",
+  },
+  "&:disabled": {
+    background: "$gray400",
   },
 });

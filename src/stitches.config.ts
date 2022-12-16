@@ -42,6 +42,8 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       gray700: "#5B5A58",
       gray800: "#3C3B3A",
       gray900: "#1C1B1A",
+
+      alert: "#8E2C2C",
     },
     fonts: {},
   },
