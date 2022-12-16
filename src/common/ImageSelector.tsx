@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 RxCross2;
 import { RxCross2 } from "react-icons/rx";
@@ -9,6 +9,7 @@ type UUID = string;
 export type Image = {
   key: UUID;
   url: string;
+  file: File;
 };
 
 type Props = {
@@ -34,6 +35,7 @@ export const ImageSelector: React.FC<Props> = (props) => {
         return {
           key: crypto.randomUUID(),
           url: URL.createObjectURL(f),
+          file: f,
         };
       });
 
@@ -61,6 +63,18 @@ export const ImageSelector: React.FC<Props> = (props) => {
       ))}
     </Base>
   );
+};
+
+export const useImageSelector = () => {
+  const [images, setImages] = useState<Image[]>([]);
+  const onFileChange = (newImages: Image[]) => {
+    setImages([...images, ...newImages]);
+  };
+  const onFileDelete = (key: string) => {
+    setImages(images.filter((image) => image.key !== key));
+  };
+
+  return [images, onFileChange, onFileDelete] as const;
 };
 
 const Base = styled("div", {
@@ -108,7 +122,7 @@ const DeleteUploadItemButton = styled("button", {
   top: "4px",
   right: "4px",
   borderRadius: "50%",
-  border: "none",
+  border: "1px solid $gray300",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

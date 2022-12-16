@@ -13,7 +13,7 @@ type Props = {
 
 export const ProjectDetailPage: React.FC<Props> = (props) => {
   return (
-    <Container>
+    <>
       <ReceiverName>
         {props.project.receiver_name}さんへの
         <br />
@@ -27,14 +27,9 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
       <hr />
 
       <ContentSetting {...props} />
-    </Container>
+    </>
   );
 };
-
-const Container = styled("div", {
-  width: "85%",
-  margin: "0 auto",
-});
 
 const ReceiverName = styled("h2", {
   fontSize: "36px",

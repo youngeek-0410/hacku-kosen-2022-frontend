@@ -11,35 +11,33 @@ export const TopPage: React.FC = () => {
   return (
     <>
       {/* <Header></Header> */}
-      <Container>
-        <Box></Box>
-        <Catchphrase>
-          感謝の言葉。
+      <Box></Box>
+      <Catchphrase>
+        感謝の言葉。
+        <br />
+        それはとっても嬉しいもの。
+        <br />
+        でもその思い出は言葉だけでは表せない。
+        <br />
+        必死に頑張っている時の写真や、
+        <br />
+        一緒にふざけてとった動画。
+        <br />
+        その思い出を一つに詰め込んで、
+        <br />
+        デジタルにしかできない表現を。
+      </Catchphrase>
+      <ButtonWrapper>
+        <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
+      </ButtonWrapper>
+      <Section>
+        <SectionTitle>Cloveeeeとは?</SectionTitle>
+        <SectionText>
+          以下説明文
           <br />
-          それはとっても嬉しいもの。
-          <br />
-          でもその思い出は言葉だけでは表せない。
-          <br />
-          必死に頑張っている時の写真や、
-          <br />
-          一緒にふざけてとった動画。
-          <br />
-          その思い出を一つに詰め込んで、
-          <br />
-          デジタルにしかできない表現を。
-        </Catchphrase>
-        <ButtonWrapper>
-          <NewProjectButton onClick={toCreateProjectPage}>色紙を作成する</NewProjectButton>
-        </ButtonWrapper>
-        <Section>
-          <SectionTitle>Cloveeeeとは?</SectionTitle>
-          <SectionText>
-            以下説明文
-            <br />
-            aaaaa
-          </SectionText>
-        </Section>
-      </Container>
+          aaaaa
+        </SectionText>
+      </Section>
     </>
   );
 };
@@ -67,11 +65,6 @@ const Catchphrase = styled("p", {
   width: "100%",
   margin: "30px auto 0",
   color: "$textPrimary",
-});
-
-const Container = styled("div", {
-  width: "80%",
-  margin: "0 auto",
 });
 
 const ButtonWrapper = styled("div", {
