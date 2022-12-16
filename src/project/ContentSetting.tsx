@@ -35,21 +35,22 @@ export const ContentSetting: React.FC<Props> = (props) => {
       </Section>
 
       <Section>
-        <ProjectHeading3 link={{ href: `/projects/${project_id}/spotify_music`, text: "変更する" }}>
+        <ProjectHeading3 link={{ href: `/projects/${project_id}/top_text`, text: "変更する" }}>
           一言メッセージ
         </ProjectHeading3>
         <ProjectParagraph>サイトトップに表示するメッセージです</ProjectParagraph>
         <SectionItem>
-          <TextMessageItem messageData={{ type: "text", text: "こうよう祭お疲れさまでした！" }} />
+          <TextMessageItem messageData={{ type: "text", text: props.project.top_text }} />
         </SectionItem>
       </Section>
 
       <Section>
-        <ProjectHeading3 link={{ href: `/projects/${project_id}/spotify_music`, text: "変更する" }}>
+        <ProjectHeading3 link={{ href: `/projects/${project_id}/top_image`, text: "変更する" }}>
           ベストショット
         </ProjectHeading3>
+        <ProjectParagraph>サイトトップに表示する写真です</ProjectParagraph>
         <SectionItem>
-          <TextMessageItem messageData={{ type: "text", text: "こうよう祭お疲れさまでした！" }} />
+          <BestShot src={props.project.top_image.url} alt="" />
         </SectionItem>
       </Section>
 
@@ -86,4 +87,9 @@ const SectionTitle = styled("div", {
 
 const SectionItem = styled("div", {
   marginTop: "8px",
+});
+
+const BestShot = styled("img", {
+  maxWidth: "100%",
+  height: "auto",
 });

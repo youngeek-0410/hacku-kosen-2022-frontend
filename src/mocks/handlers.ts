@@ -34,6 +34,10 @@ export const backendApiHandlers = [
     const resBody = {
       project_id: "a38ioje",
       receiver_name: "山田 太郎",
+      top_text: "こうよう祭おつかれ様でした！",
+      top_image: {
+        url: "https://via.placeholder.com/150",
+      },
       spotify_music: exampleSpotifyMusic,
       text_messages: {
         count: textMessageLimit || 3,

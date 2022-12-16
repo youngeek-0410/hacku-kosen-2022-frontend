@@ -4,6 +4,12 @@ export type Project = {
   project_id: string;
   receiver_name: string;
   spotify_music: SpotifyMusic;
+  top_text: string;
+  top_image: {
+    url: string;
+    width: number;
+    height: number;
+  };
   text_messages: {
     count: number;
     items: TextMessage[];
