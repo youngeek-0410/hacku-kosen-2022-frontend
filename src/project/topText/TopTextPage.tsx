@@ -17,7 +17,7 @@ export const TopTextPage: React.FC<Props> = ({ project }) => {
 
   const canSubmit = topText !== "";
   const onSubmit = async () => {
-    if (canSubmit) {
+    if (canSubmit && topText !== project.top_text) {
       await registerProjectTopText(project_id as string, topText);
     }
 
