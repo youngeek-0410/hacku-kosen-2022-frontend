@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
+import { toZipAndBase64 } from "../../common/imageEncoder";
 import { ImageSelector, useImageSelector } from "../../common/ImageSelector";
 import { styled } from "../../stitches.config";
 import { Headline } from "../common/Headline";
@@ -25,11 +26,13 @@ export const NewMessagePage: React.FC<Props> = ({ project }) => {
 
   const canSendMessage = textMessage !== "" && senderName !== "";
 
-  const onClickSendMessage = () => {
-    if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
-    callMessageApi(textMessage, senderName);
+  const onClickSendMessage = async () => {
+    // if (!canSendMessage) return; // NOTE: ユーザになぜ送信できないかを表示できるとより good. とりあえず後回し
 
-    router.push(`/projects/${project_id}`);
+    const imagesData = await toZipAndBase64(images);
+    // callMessageApi(textMessage, senderName);
+
+    // router.push(`/projects/${project_id}`);
   };
 
   const [images, onFileChange, onFileDelete] = useImageSelector();

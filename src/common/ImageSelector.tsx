@@ -9,6 +9,7 @@ type UUID = string;
 export type Image = {
   key: UUID;
   url: string;
+  file: File;
 };
 
 type Props = {
@@ -34,6 +35,7 @@ export const ImageSelector: React.FC<Props> = (props) => {
         return {
           key: crypto.randomUUID(),
           url: URL.createObjectURL(f),
+          file: f,
         };
       });
 
