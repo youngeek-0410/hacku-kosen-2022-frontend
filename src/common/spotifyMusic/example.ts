@@ -14,3 +14,7 @@ export const SampleMusic: SpotifyMusic = {
     external_url: "",
   },
 };
+
+export const exampleSpotifyMusic: { uri: string } = {
+  uri: "spotify:album:6uqewERWZ1vzfCcin1zFIp",
+};

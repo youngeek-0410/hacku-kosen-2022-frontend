@@ -2,6 +2,7 @@ import { rest } from "msw";
 
 import { backendApiUrl } from "../utils/apis";
 import { authSpotifyApiUrl } from "../common/spotifyMusic/utils/authenticate";
+import { exampleSpotifyMusic } from "../common/spotifyMusic/example";
 
 export const spotifyApiHandlers = [
   rest.post(authSpotifyApiUrl, (req, res, ctx) => {
@@ -33,20 +34,7 @@ export const backendApiHandlers = [
     const resBody = {
       project_id: "a38ioje",
       receiver_name: "山田 太郎",
-      spotify_music: {
-        uri: "uri:ljadjoihjgsadih",
-        name: "ジョジョ~その血の運命~",
-        external_url: "https://spotify.com/...",
-        preview_url: "https://spotify.com/...",
-        artist: {
-          name: "富永TOMMY弘明",
-          external_url: "https://spotify.com/...",
-        },
-        album: {
-          name: "ジョジョ~その血の運命~",
-          image_url: "https://spotify.com/...",
-        },
-      },
+      spotify_music: exampleSpotifyMusic,
       text_messages: {
         count: textMessageLimit || 3,
         items: [
