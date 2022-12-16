@@ -122,7 +122,7 @@ const DeleteUploadItemButton = styled("button", {
   top: "4px",
   right: "4px",
   borderRadius: "50%",
-  border: "none",
+  border: "1px solid $gray300",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
