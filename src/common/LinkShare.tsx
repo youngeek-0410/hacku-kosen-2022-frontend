@@ -1,36 +1,66 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiShare, FiClipboard } from "react-icons/fi";
 
 import { styled } from "../stitches.config";
 
-export const LinkShare: React.FC = () => {
+export const LinkShare: React.FC<{ url: string }> = (props) => {
   const router = useRouter();
-  const hostName = process.env.HOSTNAME;
-  const url = `${hostName}${router.asPath}`;
+  const [canShare, setCanShare] = useState(false);
+
+  const url = `${process.env.HOSTNAME}${router.asPath}/new_message`;
+
   const copyLink = () => {
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(props.url);
   };
   const shareLink = () => {
     const data: ShareData = {
-      url: url,
+      url: props.url,
     };
     navigator.share(data);
   };
 
+  useEffect(() => {
+    // NOTE: mac chrome で share がかけないらしいがぱっと対応コードが書けなかったのであと回し
+    // setCanShare(Object.hasOwn(navigator, "share"));
+  }, []);
+
   return (
-    <>
-      <span>{url}</span>
-      <ShareButton onClick={shareLink}>
-        <FiShare />
-      </ShareButton>
-      <CopyClipboard onClick={copyLink}>
-        <FiClipboard />
-      </CopyClipboard>
-    </>
+    <Base>
+      <PostMessageUrl>{props.url}</PostMessageUrl>
+      {canShare ? (
+        <Icon onClick={shareLink}>
+          <FiShare />
+        </Icon>
+      ) : (
+        <Icon onClick={copyLink}>
+          <FiClipboard />
+        </Icon>
+      )}
+
+      {/* 実際にサイトに飛べるアイコンリンク */}
+    </Base>
   );
 };
 
-const CopyClipboard = styled("button", {});
+const Base = styled("div", {
+  display: "flex",
+});
 
-const ShareButton = styled("button", {});
+const PostMessageUrl = styled("p", {
+  overflowWrap: "anywhere",
+  marginRight: "8px",
+});
+
+const Icon = styled("button", {
+  border: "none",
+  margin: "8px 16px 0 0",
+  padding: "0",
+  fontSize: "24px",
+  background: "inherit",
+  cursor: "pointer",
+  transition: "opacity 0.15s 0.05s",
+  "&:active": {
+    opacity: 0.5,
+  },
+});
