@@ -1,13 +1,13 @@
 import { GetServerSideProps, NextPage } from "next";
 
+import { SpotifyMusic } from "../../../common/spotifyMusic/type";
 import { authenticate } from "../../../common/spotifyMusic/utils/authenticate";
 import { SpotifyMusicPage } from "../../../project/spotifyMusic/SpotifyMusicPage";
-import { Project } from "../../../project/type";
 import { getProject } from "../../../utils/apis";
 import { GeneralPageProps } from "../../_app";
 
 type Props = {
-  project: Project;
+  spotifyMusic: SpotifyMusic;
 } & GeneralPageProps;
 
 const Page: NextPage<Props> = (props) => {
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   return {
     props: {
-      project,
+      spotifyMusic: project.spotify_music,
       spotifyApiAccessToken,
     },
   };

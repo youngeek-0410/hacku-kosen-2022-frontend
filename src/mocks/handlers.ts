@@ -5,15 +5,15 @@ import { authSpotifyApiUrl } from "../common/spotifyMusic/utils/authenticate";
 import { exampleSpotifyMusic } from "../common/spotifyMusic/example";
 
 export const spotifyApiHandlers = [
-  rest.post(authSpotifyApiUrl, (req, res, ctx) => {
-    const resBody = {
-      access_token: "token",
-      token_type: "Bearer",
-      expires_in: 3600,
-    };
-
-    return res(ctx.status(200), ctx.json(resBody));
-  }),
+  //   rest.post(authSpotifyApiUrl, (req, res, ctx) => {
+  //     const resBody = {
+  //       access_token: "token",
+  //       token_type: "Bearer",
+  //       expires_in: 3600,
+  //     };
+  //
+  //     return res(ctx.status(200), ctx.json(resBody));
+  //   }),
 ];
 
 export const backendApiHandlers = [
