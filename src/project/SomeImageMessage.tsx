@@ -12,9 +12,11 @@ type Props = {
 };
 
 export const SomeImageMessages: React.FC<Props> = (props) => {
+  // 三件で取得する予定ができていないのでsliceで三件にしている
+  const photos = props.imageMessageData.items.slice(0, 3);
   return (
     <PhotoList>
-      {props.imageMessageData.items.map((imageData, i) => {
+      {photos.map((imageData, i) => {
         return <Photo key={i} src={imageData.url} alt="picture sent" width={50} height={50} />;
       })}
     </PhotoList>
