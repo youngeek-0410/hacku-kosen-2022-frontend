@@ -139,3 +139,33 @@ export const registerProjectSpotifyMusic = async (projectId: string, uri: string
 
   return;
 };
+
+type RegisterProjectTopTextRequest = {
+  top_text: string;
+};
+
+export const registerProjectTopText = async (projectId: string, topText: string): Promise<void> => {
+  const body: RegisterProjectTopTextRequest = {
+    top_text: topText,
+  };
+
+  const { status } = await backendApiClient.put(`/api/projects/${projectId}/top_text/`, body);
+  if (status !== 200) throw new Error("failed to register top_text");
+
+  return;
+};
+
+type RegisterProjectTopImageRequest = {
+  top_image: Base64;
+};
+
+export const registerProjectTopImage = async (projectId: string, topImage: Base64): Promise<void> => {
+  const body: RegisterProjectTopImageRequest = {
+    top_image: topImage,
+  };
+
+  const { status } = await backendApiClient.put(`/api/projects/${projectId}/top_image/`, body);
+  if (status !== 200) throw new Error("failed to register top_text");
+
+  return;
+};

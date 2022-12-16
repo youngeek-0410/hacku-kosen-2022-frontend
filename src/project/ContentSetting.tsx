@@ -36,7 +36,7 @@ export const ContentSetting: React.FC<Props> = (props) => {
 
       <Section>
         <ProjectHeading3 link={{ href: `/projects/${project_id}/top_text`, text: "変更する" }}>
-          一言メッセージ
+          ひと言メッセージ
         </ProjectHeading3>
         <ProjectParagraph>サイトトップに表示するメッセージです</ProjectParagraph>
         <SectionItem>

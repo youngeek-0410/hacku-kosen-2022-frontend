@@ -26,6 +26,12 @@ export const backendApiHandlers = [
   rest.post(`${backendApiUrl}/api/projects/:project_id/spotify_music/`, async (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+  rest.put(`${backendApiUrl}/api/projects/:project_id/top_text/`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+  rest.put(`${backendApiUrl}/api/projects/:project_id/top_image/`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
   rest.get(`${backendApiUrl}/api/projects/:project_id/`, async (req, res, ctx) => {
     const textMessageLimit = req.url.searchParams.get("text_message_limit");
     const imageMessageLimit = req.url.searchParams.get("image_message_limit");
