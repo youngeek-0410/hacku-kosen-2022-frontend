@@ -124,3 +124,18 @@ export const createMessage = async (
 
   return;
 };
+
+type RegisterProjectSpotifyMusicRequest = {
+  uri: string;
+};
+
+export const registerProjectSpotifyMusic = async (projectId: string, uri: string): Promise<void> => {
+  const body: RegisterProjectSpotifyMusicRequest = {
+    uri,
+  };
+
+  const { status } = await backendApiClient.post(`/api/projects/${projectId}/spotify_music/`, body);
+  if (status !== 200) throw new Error("failed to register spotify music");
+
+  return;
+};

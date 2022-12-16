@@ -1,24 +1,33 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import { SpotifyMusicPlayground } from "../../common/spotifyMusic/components/SpotifyMusicPlayground";
 import { useSearchSpotifyTrack } from "../../common/spotifyMusic/hooks/useSearchSpotifyTrack";
 import { SpotifyMusic, Track } from "../../common/spotifyMusic/type";
 import { styled } from "../../stitches.config";
+import { registerProjectSpotifyMusic } from "../../utils/apis";
 import { Headline } from "../common/Headline";
 import { ProjectHeading3 } from "../common/ProjectHeading3";
 import { ProjectParagraph } from "../common/ProjectParagraph";
 
 export const SpotifyMusicPage: React.FC<{ spotifyMusic: SpotifyMusic }> = ({ spotifyMusic }) => {
+  const router = useRouter();
+  const { project_id } = router.query;
   const [query, setQuery] = useState("");
   const [currentSpotifyMusic, setCurrentSpotifyMusic] = useState<SpotifyMusic>(spotifyMusic);
   const results = useSearchSpotifyTrack(query, 10);
 
-  const onClick = (track: Track) => {
+  const onClick = async (track: Track) => {
+    const prevSpotifyMusic = currentSpotifyMusic;
     setCurrentSpotifyMusic({ uri: track.uri });
+    try {
+      await registerProjectSpotifyMusic(project_id as string, track.uri);
+    } catch (e) {
+      // NOTE: エラーが発生した場合は、前の曲に戻す
+      setCurrentSpotifyMusic(prevSpotifyMusic);
+    }
   };
-
-  console.log("results", results);
 
   return (
     <div>
