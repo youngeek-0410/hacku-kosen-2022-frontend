@@ -40,14 +40,14 @@ const App = ({ Component, pageProps }: AppPropsWithLayout<GeneralPageProps>) => 
       <StyledContainer>
         <Component {...pageProps} />
         <Head>
-          <title>{pageProps.project.receiver_name}さんのWebサイト</title>
-          <meta key="og:title" property="og:title" content={`${pageProps.project.receiver_name}さんのWebサイト`} />
+          <title>Cloveeee</title>
+          <meta key="og:title" property="og:title" content={"オリジナルWebサイト生成サービス"} />
           <meta property="og:type" content="website" />
-          <meta
+          {/* <meta
             key="og:description"
             property="og:description"
             content={`このサイトは${pageProps.project.receiver_name}さんのWebサイトです。${pageProps.project.receiver_name}さん、${pageProps.project.top_text}`}
-          />
+          /> */}
           <meta
             key="og:image"
             property="og:image"
