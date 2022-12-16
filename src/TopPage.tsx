@@ -81,6 +81,9 @@ const NewProjectButton = styled("button", {
   borderRadius: "44px",
   border: "none",
   margin: "30px auto",
+  "&:active": {
+    background: "$yellow900-reaction",
+  },
 });
 
 const Section = styled("div", {
