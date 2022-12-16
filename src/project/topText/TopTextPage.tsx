@@ -27,9 +27,7 @@ export const TopTextPage: React.FC<Props> = ({ project }) => {
   return (
     <>
       <Headline title="ひと言メッセージ" />
-      <ProjectParagraph>
-        ひと言メッセージにはオリジナルWebサイトのトップに配置するメッセージを設定できます
-      </ProjectParagraph>
+      <ProjectParagraph>オリジナルWebサイトのトップに配置するメッセージを設定できます</ProjectParagraph>
 
       <Label htmlFor="top_text">ひと言メッセージ</Label>
       <TopText

@@ -11,20 +11,20 @@ export const ProjectSetting: React.FC = () => {
   return (
     <>
       <SectionTitle>
-        <ProjectHeading2>サイト設定</ProjectHeading2>
-        <ProjectParagraph>オリジナルWebサイトに関する設定ができます。</ProjectParagraph>
+        <ProjectHeading2>サイト管理</ProjectHeading2>
+        <ProjectParagraph>みんなからの投稿を集めてオリジナルWebサイトを作成できます</ProjectParagraph>
       </SectionTitle>
 
       <Section>
         <ProjectHeading3>寄書き用リンクをコピー</ProjectHeading3>
-        <ProjectParagraph>寄書きを投稿してもらうには右のボタンからURLをコピーして共有してください</ProjectParagraph>
+        <ProjectParagraph>寄書きを投稿してもらうには下のURLをコピーして共有してください</ProjectParagraph>
         {/* TODO: いい感じコピーできるコンポーネントを用意する */}
         <LinkShare />
       </Section>
 
       <Section>
         <ProjectHeading3>プレビューをみる</ProjectHeading3>
-        <ProjectParagraph>下のリンクから完成予定のオリジナルWebサイトを見ることが出来ます</ProjectParagraph>
+        <ProjectParagraph>下のリンクから完成予定のオリジナルWebサイトを見ることができます</ProjectParagraph>
         {/* TODO: いい感じコピーできるコンポーネントを用意する */}
         {/*  <LinkCopyButton onClick={copyLink}>コピーする</LinkCopyButton>*/}
       </Section>
