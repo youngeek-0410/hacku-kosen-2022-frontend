@@ -8,7 +8,7 @@ import { Track } from "../type";
 type SpotifyApiSearchRequest = {
   q: string;
   type: "track";
-  limit: 5;
+  limit: number;
 };
 
 type SpotifyApiSearchResponse = {
@@ -17,7 +17,7 @@ type SpotifyApiSearchResponse = {
   };
 };
 
-export const useSearchSpotifyTrack = (query: string): Track[] => {
+export const useSearchSpotifyTrack = (query: string, limit: number): Track[] => {
   const accessToken = useSpotifyApiAccessToken();
   const [tracks, setTracks] = useState<Track[]>([]);
 
@@ -31,7 +31,7 @@ export const useSearchSpotifyTrack = (query: string): Track[] => {
       const params: SpotifyApiSearchRequest = {
         q: query,
         type: "track",
-        limit: 5,
+        limit: limit,
       };
 
       const requestConfig: AxiosRequestConfig = {
