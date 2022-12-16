@@ -36,7 +36,7 @@ export const NewMessagePage: React.FC<Props> = ({ project }) => {
 
   return (
     <>
-      <Headline title={`${project.receiver_name}さんへの式紙`} />
+      <Headline title={`${project.receiver_name}さんへのメッセージ`} />
 
       <TextMessageEdit sectionValue={textMessage} onChange={setTextMessage} />
       <ImageSelector images={images} choseLimit={6} onFileChange={onFileChange} onFileDelete={onFileDelete} />
