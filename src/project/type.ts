@@ -4,6 +4,12 @@ export type Project = {
   project_id: string;
   receiver_name: string;
   spotify_music: SpotifyMusic;
+  top_text: string;
+  top_image: {
+    url: string;
+    width: number;
+    height: number;
+  };
   text_messages: {
     count: number;
     items: TextMessage[];
@@ -17,7 +23,7 @@ export type Project = {
 export type TextMessage = {
   type: "text";
   text: string;
-  sender_name: string;
+  sender_name?: string;
 };
 
 export type ImageMessage = {
