@@ -17,7 +17,7 @@ export type Project = {
 export type TextMessage = {
   type: "text";
   text: string;
-  sender_name: string;
+  sender_name?: string;
 };
 
 export type ImageMessage = {

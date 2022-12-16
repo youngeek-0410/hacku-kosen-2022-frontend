@@ -23,10 +23,8 @@ export const SomeImageMessages: React.FC<Props> = (props) => {
   );
 };
 const PhotoList = styled("div", {
-  width: "100%",
   display: "flex",
   justifyContent: "space-between",
-  marginTop: "8px",
 });
 
 const Photo = styled("img", {
