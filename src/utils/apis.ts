@@ -4,6 +4,7 @@ import { Base64 } from "../common/imageEncoder";
 import { ImageMessage, Project, TextMessage } from "../project/type";
 
 export const backendApiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
+export const searchSpotifyMusicApiUrl = "https://api.spotify.com/v1/search";
 
 const backendApiClient = axios.create({
   baseURL: backendApiUrl,
