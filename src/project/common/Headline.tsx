@@ -21,7 +21,7 @@ const Base = styled("div", {
 
 const Title = styled("p", {
   fontSize: "28px",
-  fontWeight: "300",
+  fontWeight: "400",
   color: "$textPrimary",
   whiteSpace: "pre-wrap",
 });
