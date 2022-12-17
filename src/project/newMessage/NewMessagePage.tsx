@@ -41,11 +41,11 @@ export const NewMessagePage: React.FC<Props> = ({ project }) => {
         <textarea rows={9} value={textMessage} onChange={(e) => setTextMessage(e.target.value)} />
       </Section>
       <Section>
-        <label>送るメッセージを入力してください</label>
+        <label>送る写真を選択してください</label>
         <ImageSelector images={images} choseLimit={6} onFileChange={onFileChange} onFileDelete={onFileDelete} />
       </Section>
       <Section>
-        <label>あなたのお名前をどうぞ</label>
+        <label>あなたのお名前</label>
         <input value={senderName} placeholder={senderNamePlaceholder} onChange={(e) => setSenderName(e.target.value)} />
       </Section>
       <SendButton onClick={onClickSendButton} disabled={!canSendMessage}>

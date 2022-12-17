@@ -7,9 +7,6 @@ import { styled } from "../stitches.config";
 export const LinkShare: React.FC<{ url: string }> = (props) => {
   const router = useRouter();
   const [canShare, setCanShare] = useState(false);
-
-  const url = `${process.env.HOSTNAME}${router.asPath}/new_message`;
-
   const copyLink = () => {
     navigator.clipboard.writeText(props.url);
   };

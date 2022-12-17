@@ -19,8 +19,8 @@ export const ProjectSetting: React.FC = () => {
   return (
     <>
       <SectionTitle>
-        <ProjectHeading2>サイト設定</ProjectHeading2>
-        <ProjectParagraph>オリジナルWebサイトに関する設定ができます。</ProjectParagraph>
+        <ProjectHeading2>サイト管理</ProjectHeading2>
+        <ProjectParagraph>みんなからの投稿を集めてオリジナルWebサイトを作成できます</ProjectParagraph>
       </SectionTitle>
 
       <Section>
@@ -53,4 +53,3 @@ const Section = styled("div", {
 const SectionTitle = styled("div", {
   margin: "24px 0 36px",
 });
-const LinkCopyButton = styled("button", {});

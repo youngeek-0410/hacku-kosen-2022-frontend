@@ -11,9 +11,10 @@ type Props = {
 };
 
 export const SomeTextMessages: React.FC<Props> = (props) => {
+  const textMessages = props.textMessageData.items.slice(0, 3);
   return (
     <>
-      {props.textMessageData.items.map((messageData, i) => {
+      {textMessages.map((messageData, i) => {
         return <TextMessageItem key={i} messageData={messageData} />;
       })}
     </>
