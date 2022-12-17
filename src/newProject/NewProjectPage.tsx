@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 
 import { styled } from "../stitches.config";
 import { createProject } from "../utils/apis";
+import { ProjectHeading2 } from "../project/common/ProjectHeading2";
+import { ProjectParagraph } from "../project/common/ProjectParagraph";
 
 const receiverNamePlaceholder = "山田 太郎";
 
@@ -23,28 +25,32 @@ export const NewProjectPage: React.FC = () => {
     <>
       <Base>
         <div>
-          <PageTitle>
+          <ProjectHeading2>
             オリジナルWebサイト
             <br />
             を作成する
-          </PageTitle>
+          </ProjectHeading2>
           <Discription>
-            渡したい相手のお名前を入力してください
-            <br />
-            ここで入力されたお名前が公開するWebサイトに表示されます
+            <ProjectParagraph>
+              渡したい相手のお名前を入力してください <br />
+              ここで入力されたお名前が公開するWebサイトに表示されます
+            </ProjectParagraph>
           </Discription>
-          <Label htmlFor="name">お名前</Label>
-          <InputName
-            name="name"
-            value={nameInputStatus.name}
-            placeholder={receiverNamePlaceholder}
-            onChange={(e) => setNameInputStatus({ name: e.target.value, isTouched: true })}
-          />
-          <InvalidMessageWrapper>
-            <InvalidMessage aria-live="polite" hidden={!(nameInputStatus.name === "" && nameInputStatus.isTouched)}>
-              1文字以上入力してください。
-            </InvalidMessage>
-          </InvalidMessageWrapper>
+
+          <div>
+            <Label htmlFor="name">お名前</Label>
+            <InputName
+              name="name"
+              value={nameInputStatus.name}
+              placeholder={receiverNamePlaceholder}
+              onChange={(e) => setNameInputStatus({ name: e.target.value, isTouched: true })}
+            />
+            <InvalidMessageWrapper>
+              <InvalidMessage aria-live="polite" hidden={!(nameInputStatus.name === "" && nameInputStatus.isTouched)}>
+                1文字以上入力してください。
+              </InvalidMessage>
+            </InvalidMessageWrapper>
+          </div>
         </div>
         <NewProjectButton onClick={registerProject} disabled={!canRegister}>
           色紙を作成する
@@ -62,22 +68,16 @@ const Base = styled("div", {
   justifyContent: "center",
 });
 
-const PageTitle = styled("p", {
-  fontWeight: "700",
-  textAlign: "left",
-  fontSize: "24px",
-  margin: "0",
-  color: "$textPrimary",
-});
-
 const Discription = styled("p", {
   textAlign: "left",
   fontSize: "14px",
-  margin: "8px auto 16px",
+  margin: "8px auto 48px",
   color: "$textPrimary",
 });
 
 const Label = styled("label", {
+  display: "block",
+  marginBottom: "4px",
   fontSize: "12px",
   color: "$textPrimary",
 });
