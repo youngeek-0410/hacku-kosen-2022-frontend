@@ -1,11 +1,13 @@
 import React, { ReactElement, ReactNode } from "react";
 import { AppProps } from "next/app";
 import { NextPage } from "next";
+import Head from "next/head";
 
 import { SpotifyApiAccessToken } from "../common/spotifyMusic/type";
 import { SpotifyApiAccessTokenProvider } from "../common/spotifyMusic/contexts/SpotifyApiAuthProvider";
 import { setupMockServer, setupMockWorker } from "../mocks/mock";
 import { styled } from "../stitches.config";
+import { Project } from "../project/type";
 
 export type GeneralPageProps = { spotifyApiAccessToken?: SpotifyApiAccessToken };
 export type NextLayout = (page: ReactElement) => ReactNode;
@@ -15,6 +17,9 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 type AppPropsWithLayout<P> = AppProps<P> & {
   Component: NextPageWithLayout<P>;
+  pageProps: {
+    project: Project;
+  };
 };
 
 if (process.env.NODE_ENV === "development") {
@@ -34,6 +39,22 @@ const App = ({ Component, pageProps }: AppPropsWithLayout<GeneralPageProps>) => 
     <SpotifyApiAccessTokenProvider accessToken={pageProps.spotifyApiAccessToken || ""}>
       <StyledContainer>
         <Component {...pageProps} />
+        <Head>
+          <title>Cloveeee</title>
+          <meta key="og:title" property="og:title" content={"オリジナルWebサイト生成サービス"} />
+          <meta property="og:type" content="website" />
+          {/* <meta
+            key="og:description"
+            property="og:description"
+            content={`このサイトは${pageProps.project.receiver_name}さんのWebサイトです。${pageProps.project.receiver_name}さん、${pageProps.project.top_text}`}
+          /> */}
+          <meta
+            key="og:image"
+            property="og:image"
+            content="https://res.cloudinary.com/drb9hgnv3/image/upload/v1671231721/shazaf-zafar-SsyAGjPDpw8-unsplash_fj6thj.jpg"
+          />
+          <link rel="icon" href="https://res.cloudinary.com/drb9hgnv3/image/upload/v1671063427/logo_pcmicx.svg" />
+        </Head>
       </StyledContainer>
     </SpotifyApiAccessTokenProvider>
   );
