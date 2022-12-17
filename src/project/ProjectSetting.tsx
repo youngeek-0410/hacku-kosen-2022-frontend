@@ -74,7 +74,7 @@ export const ProjectSetting: React.FC<Props> = ({ project }) => {
         </ProjectParagraph>
         {isPublished ? <LinkShare url={publishLink(project_id as string)} /> : null}
         <PublishButton disabled={isPublished} onClick={onClickPublishButton}>
-          思いをとどける
+          想いをとどける
         </PublishButton>
       </Section>
     </>
