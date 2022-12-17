@@ -31,7 +31,7 @@ export const TopImagePage: React.FC<Props> = ({ project }) => {
   return (
     <>
       <Headline title="ベストショット" />
-      <ProjectParagraph>ベストショットにはオリジナルWebサイトのトップに配置する写真を設定できます</ProjectParagraph>
+      <ProjectParagraph>オリジナルWebサイトのトップに配置する写真を設定できます</ProjectParagraph>
 
       <div>
         <p>現在設定中のベストショット</p>

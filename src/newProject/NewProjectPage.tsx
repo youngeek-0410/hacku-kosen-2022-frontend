@@ -23,8 +23,16 @@ export const NewProjectPage: React.FC = () => {
     <>
       <Base>
         <div>
-          <PageTitle>色紙を作成する</PageTitle>
-          <Discription>ここで入力されたお名前はページが公開されるときにも使用されます。</Discription>
+          <PageTitle>
+            オリジナルWebサイト
+            <br />
+            を作成する
+          </PageTitle>
+          <Discription>
+            渡したい相手のお名前を入力してください
+            <br />
+            ここで入力されたお名前が公開するWebサイトに表示されます
+          </Discription>
           <Label htmlFor="name">お名前</Label>
           <InputName
             name="name"
