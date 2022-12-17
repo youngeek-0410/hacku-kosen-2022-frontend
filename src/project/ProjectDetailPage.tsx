@@ -22,7 +22,7 @@ export const ProjectDetailPage: React.FC<Props> = (props) => {
 
       <hr />
 
-      <ProjectSetting />
+      <ProjectSetting {...props} />
 
       <hr />
 
